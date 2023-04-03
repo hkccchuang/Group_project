@@ -20,6 +20,9 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,Animation.AnimationListener{
 
     public static MediaPlayer mMediaPlayer = new MediaPlayer();//BGM
+
+
+    private static long lastClickTime = 0;//prevent fast clicking
     private SoundPool sp;//sound effect for button
      int soundEffect;//sound type
      public Intent next;//to next activity
@@ -54,7 +57,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         start=findViewById(R.id.btnStart);
         start.setOnClickListener(this);
         contin=findViewById(R.id.btnContinue);
+        contin.setOnClickListener(this);
         score=findViewById(R.id.btnScore);
+        score.setOnClickListener(this);
     }
     public void loadAnimation()
     {animRotateRight= AnimationUtils.loadAnimation(this,R.anim.rotate_right);
@@ -82,21 +87,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
 
-        sp.play(soundEffect, 1, 1, 0, 0, 1);//wood_hit sound effect
-        if(view.getId()==R.id.btnStart)start.startAnimation(animRotateRight);
-      TimerTask task=new TimerTask(){
-      public void run(){
 
-          if(view.getId()==R.id.btnStart){
-              next=new Intent(MainActivity.this, StageSelection.class);
-              isNext=true;
 
-              startActivity(next);
-          }
+         if(!isFastDoubleClick()) {
+             sp.play(soundEffect, 1, 1, 0, 0, 1);//wood_hit sound effect
+             if (view.getId() == R.id.btnStart) start.startAnimation(animRotateRight);
+             else if (view.getId() == R.id.btnContinue) contin.startAnimation(animRotateRight);
+             else if (view.getId() == R.id.btnScore)
+                 score.startAnimation(animRotateRight); //animation
 
-      }
-   };      start.startAnimation(animRotateRight);
-           timer.schedule(task, 1500);//stop 0.5second for next activity
+             TimerTask task = new TimerTask() {
+                 public void run() {
+
+                     if (view.getId() == R.id.btnStart) {
+                         next = new Intent(MainActivity.this, StageSelection.class);
+                         isNext = true;
+                         startActivity(next);
+                     } else if (view.getId() == R.id.btnContinue) {
+                         next = new Intent(MainActivity.this, StageSelection.class);
+                         isNext = true;
+                         startActivity(next);
+                     } else if (view.getId() == R.id.btnScore) {
+                         next = new Intent(MainActivity.this, StageSelection.class);
+                         isNext = true;
+                         startActivity(next);
+                     }
+
+                 }
+             };
+             timer.schedule(task, 900);
+             //stop 0.9second for next activity,the value should less
+             // than 1000(Max time value in isFastDoubleClick click function) for prevent fast clicking event
+         }
     }
 
     @Override
@@ -113,4 +135,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onAnimationRepeat(Animation animation) {
 
     }
+
+
+    public boolean isFastDoubleClick() {
+            long time = System.currentTimeMillis();
+            long timeD = time - lastClickTime;
+            if (0 < timeD && timeD < 1000) {
+                return true;
+            }
+            lastClickTime = time;
+            return false;
+        }// A function detected fast clicking,
+
 }
