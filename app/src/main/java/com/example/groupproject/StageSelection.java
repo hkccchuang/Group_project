@@ -11,5 +11,6 @@ public class StageSelection extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stage_selection);
         MainActivity.mMediaPlayer.start();
+        getSupportActionBar().hide();
     }
 }

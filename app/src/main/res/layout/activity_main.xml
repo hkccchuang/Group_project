@@ -31,7 +31,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.434"
         app:srcCompat="@drawable/btn_start"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        />
 
     <ImageButton
         android:id="@+id/btnContinue"
