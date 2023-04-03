@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Temporary</string>
+    <string name="contentDescription1">Start</string>
+    <string name="contentDescription2">Continue</string>
+    <string name="contentDescription3">Score</string>
+
 </resources>
