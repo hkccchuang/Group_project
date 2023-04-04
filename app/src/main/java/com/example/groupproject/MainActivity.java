@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -20,11 +22,11 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,Animation.AnimationListener{
 
     public static MediaPlayer mMediaPlayer = new MediaPlayer();//BGM
-
+    public   SoundPool sp;//sound effect for button
+    int soundEffect;//sound type
 
     private static long lastClickTime = 0;//prevent fast clicking
-    private SoundPool sp;//sound effect for button
-     int soundEffect;//sound type
+
      public Intent next;//to next activity
      ImageButton start,contin,score;
 
@@ -33,24 +35,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Animation animRotateRight;
 
+    SharedPreferences userInfo;//user information storage
+    SharedPreferences.Editor editor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();//hide the action bar
-        loadSound();//bgm
+        loadSound();
+        loadMusic();//bgm
         loadUI();
         loadAnimation();
 
     }
 
-    public void loadSound(){
+    public void loadMusic(){
         mMediaPlayer = MediaPlayer.create(this, R.raw.bgm);
         mMediaPlayer.setLooping(true);
         mMediaPlayer.start();
+    }
+
+    public void loadSound(){
+
         sp= new SoundPool(10, AudioManager.STREAM_SYSTEM, 5);
         soundEffect = sp.load(this, R.raw.wood_hit, 1);
+
+
     }
 
     public void loadUI(){
@@ -69,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onPause(){
         super.onPause();
 
+
         if(!isNext){
         mMediaPlayer.pause();
         //If user go to other intent,music will not be pause
@@ -81,7 +94,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onResume(){
         super.onResume();
         mMediaPlayer.start();
+        editor.commit();//save data
+    }
 
+    protected void onDestroy(){
+        super.onDestroy();
+        sp.release();//release sound pool
     }
 
     @Override
@@ -100,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                  public void run() {
 
                      if (view.getId() == R.id.btnStart) {
-                         next = new Intent(MainActivity.this, StageSelection.class);
+                         next = new Intent(MainActivity.this, UserRegister.class);
                          isNext = true;
                          startActivity(next);
                      } else if (view.getId() == R.id.btnContinue) {
@@ -115,9 +133,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                  }
              };
-             timer.schedule(task, 900);
-             //stop 0.9second for next activity,the value should less
-             // than 1000(Max time value in isFastDoubleClick click function) for prevent fast clicking event
+             timer.schedule(task, 600);
+             //stop 0.6second for next activity,the value should less
+             // than 2000(Max time value in isFastDoubleClick click function) for prevent fast clicking event
          }
     }
 
@@ -140,11 +158,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public boolean isFastDoubleClick() {
             long time = System.currentTimeMillis();
             long timeD = time - lastClickTime;
-            if (0 < timeD && timeD < 1000) {
+            if (0 < timeD && timeD < 1500) {
                 return true;
             }
             lastClickTime = time;
             return false;
         }// A function detected fast clicking,
 
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK ) {
+            //do something.
+            return true;
+        } else {
+            return super.dispatchKeyEvent(event);
+        }
+    }//Ban Back button
 }

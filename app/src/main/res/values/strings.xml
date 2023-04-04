@@ -3,5 +3,12 @@
     <string name="contentDescription1">Start</string>
     <string name="contentDescription2">Continue</string>
     <string name="contentDescription3">Score</string>
+    <string name="contentDescription4">register</string>
+    <string name="hint_register">Your name</string>
+    <string name="btn_register"></string>
+    <string name="btn_cancel">cancel</string>
+    <string name="btn_cancel2">cancel2</string>
+    <string name="btn_confirm">confirm</string>
+
 
 </resources>
