@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         loadUI();
         loadAnimation();
 
-
     }
 
     public void loadMusic(){
@@ -179,4 +178,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return super.dispatchKeyEvent(event);
         }
     }//Ban Back button
+
+    public void cleanPrefer(){
+        userInfo=getSharedPreferences("userName",MODE_PRIVATE);
+        editor=userInfo.edit();
+        editor.clear();
+    }//pretend a new user for testing
 }

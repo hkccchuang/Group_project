@@ -146,7 +146,7 @@ public class StageSelection extends AppCompatActivity implements View.OnClickLis
     public boolean isFastDoubleClick() {
         long time = System.currentTimeMillis();
         long timeD = time - lastClickTime;
-        if (0 < timeD && timeD < 1500) {
+        if (0 < timeD && timeD < 900) {
             return true;
         }
         lastClickTime = time;
