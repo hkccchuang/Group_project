@@ -26,7 +26,7 @@
 
     <EditText
         android:id="@+id/editUserName"
-        android:layout_width="204dp"
+        android:layout_width="250dp"
         android:layout_height="82dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"

@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         loadUI();
         loadAnimation();
 
+
     }
 
     public void loadMusic(){
@@ -72,6 +73,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         contin.setOnClickListener(this);
         score=findViewById(R.id.btnScore);
         score.setOnClickListener(this);
+        userInfo=getSharedPreferences("userName",MODE_PRIVATE);
+        editor=userInfo.edit();
+
     }
     public void loadAnimation()
     {animRotateRight= AnimationUtils.loadAnimation(this,R.anim.rotate_right);
@@ -80,8 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     protected void onPause(){
         super.onPause();
-
-
+        editor.commit();
         if(!isNext){
         mMediaPlayer.pause();
         //If user go to other intent,music will not be pause
@@ -93,8 +96,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     protected void onResume(){
         super.onResume();
+        isNext=false;
         mMediaPlayer.start();
-        editor.commit();//save data
+
     }
 
     protected void onDestroy(){
@@ -108,9 +112,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
          if(!isFastDoubleClick()) {
-             sp.play(soundEffect, 1, 1, 0, 0, 1);//wood_hit sound effect
+             sp.play(soundEffect, 0.3f, 0.3f, 0, 0, 1);//wood_hit sound effect
              if (view.getId() == R.id.btnStart) start.startAnimation(animRotateRight);
-             else if (view.getId() == R.id.btnContinue) contin.startAnimation(animRotateRight);
+             else if (view.getId() == R.id.btnContinue&&userInfo.getString("name","0")!="0")
+                 contin.startAnimation(animRotateRight);//If not user data,no animation
              else if (view.getId() == R.id.btnScore)
                  score.startAnimation(animRotateRight); //animation
 
@@ -121,10 +126,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                          next = new Intent(MainActivity.this, UserRegister.class);
                          isNext = true;
                          startActivity(next);
-                     } else if (view.getId() == R.id.btnContinue) {
+                     } else if (view.getId() == R.id.btnContinue&& userInfo.getString("name","0")!="0") {
                          next = new Intent(MainActivity.this, StageSelection.class);
                          isNext = true;
-                         startActivity(next);
+                         startActivity(next);//Have not effect if there is no user before
                      } else if (view.getId() == R.id.btnScore) {
                          next = new Intent(MainActivity.this, StageSelection.class);
                          isNext = true;
