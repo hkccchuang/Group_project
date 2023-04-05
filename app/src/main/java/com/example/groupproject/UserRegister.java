@@ -81,7 +81,7 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
     }
 
     private void loadSound(){
-        sp= new SoundPool(10, AudioManager.STREAM_SYSTEM, 5);
+        sp= new SoundPool(1000, AudioManager.STREAM_SYSTEM, 5);
         soundEffect = sp.load(this, R.raw.confirm, 1);//confirm.mp3
     }
 
@@ -131,22 +131,27 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
                 else if(view.getId()==R.id.btnConfirm&&userInfo.getString("name","0")=="0"){
                     intent =new Intent(UserRegister.this,StageSelection.class);
 
+                    isNext=true;
+
                     username=editUserName.getText().toString();           //store the new username
 
                     editor.putString("name",username);
 
                     editor.commit();
+                    //upload score here
                     finish();
                     startActivity(intent);// Successful case.User name not null but this is the first user then go to stage selection
                 }
                 else if(view.getId()==R.id.btnConfirm&&userInfo.getString("name","0")!="0"&&isDelete){
+
+                    isNext=true;
 
                     intent =new Intent(UserRegister.this,StageSelection.class);
 
                     editor.putString("name",username);
 
                     editor.commit();
-
+                    //upload score here
                     finish();
                     startActivity(intent);
                     // Second Successful case.User name not null and already have a user then go to stage selection
@@ -202,6 +207,7 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
 
     protected void onPause(){
         super.onPause();
+        sp.release();
         if(!isNext){
             MainActivity.mMediaPlayer.pause();
             //If user go to other intent,music will not be pause
@@ -210,6 +216,7 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
 
     protected void onResume(){
         super.onResume();
+        loadSound();
         MainActivity.mMediaPlayer.start();
         isNext=false;
 

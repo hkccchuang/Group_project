@@ -39,6 +39,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     SharedPreferences.Editor editor;
 
 
+    public static int[] scoreTotal; //store all the score for a single user
+    public static int[] ranking;//ranking for all the user
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,13 +57,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void loadMusic(){
         mMediaPlayer = MediaPlayer.create(this, R.raw.bgm);
+        mMediaPlayer.setVolume(0.3f, 0.3f);
         mMediaPlayer.setLooping(true);
         mMediaPlayer.start();
     }
 
     public void loadSound(){
 
-        sp= new SoundPool(10, AudioManager.STREAM_SYSTEM, 5);
+        sp= new SoundPool(1000, AudioManager.STREAM_SYSTEM, 5);
         soundEffect = sp.load(this, R.raw.wood_hit, 1);
 
 
@@ -109,7 +114,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
 
 
-
          if(!isFastDoubleClick()) {
              sp.play(soundEffect, 0.3f, 0.3f, 0, 0, 1);//wood_hit sound effect
              if (view.getId() == R.id.btnStart) start.startAnimation(animRotateRight);
@@ -130,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                          isNext = true;
                          startActivity(next);//Have not effect if there is no user before
                      } else if (view.getId() == R.id.btnScore) {
-                         next = new Intent(MainActivity.this, StageSelection.class);
+                         next = new Intent(MainActivity.this, ScoreBoard.class);
                          isNext = true;
                          startActivity(next);
                      }

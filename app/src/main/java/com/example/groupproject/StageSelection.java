@@ -37,6 +37,7 @@ public class StageSelection extends AppCompatActivity implements View.OnClickLis
     int soundEffect;
 
     Animation toRight,toLeft,rotate;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +94,7 @@ public class StageSelection extends AppCompatActivity implements View.OnClickLis
     }
 
     private void loadSound(){
-        sp= new SoundPool(10, AudioManager.STREAM_SYSTEM, 5);
+        sp= new SoundPool(1000, AudioManager.STREAM_SYSTEM, 5);
         soundEffect = sp.load(this, R.raw.wood_hit, 1);//confirm.mp3
     }
 
@@ -108,6 +109,7 @@ public class StageSelection extends AppCompatActivity implements View.OnClickLis
 
     protected void onPause(){
         super.onPause();
+        sp.release();
         if(!isNext){
             MainActivity.mMediaPlayer.pause();
             //If user go to other intent,music will not be pause
@@ -116,6 +118,7 @@ public class StageSelection extends AppCompatActivity implements View.OnClickLis
 
     protected void onResume(){
         super.onResume();
+        loadSound();
         MainActivity.mMediaPlayer.start();
         isNext=false;
     }
@@ -131,11 +134,62 @@ public class StageSelection extends AppCompatActivity implements View.OnClickLis
 
             sp.play(soundEffect, 0.3f, 0.3f, 0, 0, 1);
             if (view.getId() ==R.id.btnBack){btnBack.startAnimation(rotate);scrollView.startAnimation(toRight);}
+
         TimerTask task = new TimerTask() {
             public void run() {
 
-                if(view.getId()==R.id.btnBack){finish();}
-
+                      if(view.getId()==R.id.btnBack){finish();}
+                else  if(view.getId()==R.id.btnStage1){
+                    isNext=true;
+                    intent= new Intent(StageSelection.this,Stage1.class);
+                    startActivity(intent);
+                }
+                      else  if(view.getId()==R.id.btnStage2){
+                          isNext=true;
+                          intent= new Intent(StageSelection.this,Stage2.class);
+                          startActivity(intent);
+                      }
+                      else  if(view.getId()==R.id.btnStage3){
+                          isNext=true;
+                          intent= new Intent(StageSelection.this,Stage3.class);
+                          startActivity(intent);
+                      }
+                      else  if(view.getId()==R.id.btnStage4){
+                          isNext=true;
+                          intent= new Intent(StageSelection.this,Stage4.class);
+                          startActivity(intent);
+                      }
+                      else  if(view.getId()==R.id.btnStage5){
+                          isNext=true;
+                          intent= new Intent(StageSelection.this,Stage5.class);
+                          startActivity(intent);
+                      }
+                      else  if(view.getId()==R.id.btnStage6){
+                          isNext=true;
+                          intent= new Intent(StageSelection.this,Stage6.class);
+                          startActivity(intent);
+                      }
+                      else  if(view.getId()==R.id.btnStage7){
+                          isNext=true;
+                          intent= new Intent(StageSelection.this,Stage7.class);
+                          startActivity(intent);
+                      }
+                      else  if(view.getId()==R.id.btnStage8){
+                          isNext=true;
+                          intent= new Intent(StageSelection.this,Stage8.class);
+                          startActivity(intent);
+                      }
+                      else  if(view.getId()==R.id.btnStage9){
+                          isNext=true;
+                          intent= new Intent(StageSelection.this,Stage9.class);
+                          startActivity(intent);
+                      }
+                      else  if(view.getId()==R.id.btnStage10){
+                          isNext=true;
+                          intent= new Intent(StageSelection.this,Stage10.class);
+                          startActivity(intent);
+                      }//add stage lock if score=0 or not exist
+                     finish();
             }
         };
         timer.schedule(task, 500);}
