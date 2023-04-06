@@ -28,7 +28,7 @@ import java.util.Timer;
 
 public class Stage extends AppCompatActivity implements View.OnClickListener, Animation.AnimationListener {
      // Only a Class for extends,Not a real Stage
-    int basicScore=200,bonusScore=200;//Max score = 400 per stage,one second=bonusScore-1
+    int basicScore=200,bonusScore=200;//Max score = 400 per stage,one second=bonusScore-2
     int totalScore=0;
     public SharedPreferences userScore;//score storage
     public SharedPreferences.Editor editor;
@@ -36,6 +36,10 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
     boolean isNext=false;
     public SoundPool sp;
     int soundEffect;
+    Animation toLeft,rotate;
+    ImageButton btnBack,btnHint,btnRestart;
+    TextView title;
+
 
 
 
@@ -116,7 +120,7 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
     public boolean isFastDoubleClick() {
         long time = System.currentTimeMillis();
         long timeD = time - lastClickTime;
-        if (0 < timeD && timeD < 800) {
+        if (0 < timeD && timeD < 1800) {
             return true;
         }
         lastClickTime = time;
@@ -192,27 +196,51 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
     public void giveHint(String hint){
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("This is a Hint");  //設置標題
-            builder.setIcon(R.mipmap.ic_launcher_round); //標題前面那個小圖示
-            builder.setMessage(hint); //提示訊息
+            builder.setTitle("This is a Hint");
+            builder.setIcon(R.mipmap.ic_launcher_round); //icon
+            builder.setMessage(hint);
 
 
-            //確定 取消 一般 這三種按鈕就看你怎麼發揮你想置入的功能囉
             builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
+
                     dialogInterface.dismiss();
                 }
             });
-            builder.setNegativeButton("Thanks", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    dialogInterface.dismiss();
-                }
-            });
+
             builder.create().show();
 
     }//give a dialog for show some hint
+
+    public void nextStageDialog(){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Congratulation!!");  //設置標題
+        builder.setIcon(R.mipmap.ic_launcher_round); //標題前面那個小圖示
+        builder.setMessage("Your Score is "+ String.valueOf(countHighestScore())); //提示訊息
+        builder.setCancelable(false);
+        pauseChronometer();
+
+
+        //確定 取消 一般 這三種按鈕就看你怎麼發揮你想置入的功能囉
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                isNext=true;
+                finish();
+                overridePendingTransition(0,0);//no animation for reset,can add a animation
+                startActivity(intent);
+                dialogInterface.dismiss();
+            }
+        });
+
+        builder.create().show();
+
+
+    }//give a dialog for show some hint
+
+
 
 
 

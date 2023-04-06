@@ -77,6 +77,37 @@ public class StageSelection extends AppCompatActivity implements View.OnClickLis
         btnStage10.setOnClickListener(this);
         btnBack.setOnClickListener(this);
 
+
+        scoreInfo=getSharedPreferences("userName",MODE_PRIVATE);
+
+        if(scoreInfo.getInt("score1",0)!=0){
+            btnStage2.setAlpha(0.0f);
+        }
+        if(scoreInfo.getInt("score2",0)!=0){
+            btnStage3.setAlpha(0.0f);
+        }
+        if(scoreInfo.getInt("score3",0)!=0){
+            btnStage4.setAlpha(0.0f);
+        }
+         if(scoreInfo.getInt("score4",0)!=0){
+            btnStage5.setAlpha(0.0f);
+        }
+        if(scoreInfo.getInt("score5",0)!=0){
+            btnStage6.setAlpha(0.0f);
+        }
+         if(scoreInfo.getInt("score6",0)!=0){
+            btnStage7.setAlpha(0.0f);
+        }
+         if(scoreInfo.getInt("score7",0)!=0){
+            btnStage8.setAlpha(0.0f);
+        }
+         if(scoreInfo.getInt("score8",0)!=0){
+            btnStage9.setAlpha(0.0f);
+        }
+         if(scoreInfo.getInt("score9",0)!=0){
+            btnStage10.setAlpha(0.0f);
+        }
+
       //remember set visibility for stage lock
 
     }
@@ -129,6 +160,8 @@ public class StageSelection extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View view) {
 
+        scoreInfo=getSharedPreferences("userName",MODE_PRIVATE);
+
 
         if(!isFastDoubleClick()){
 
@@ -143,53 +176,63 @@ public class StageSelection extends AppCompatActivity implements View.OnClickLis
                     isNext=true;
                     intent= new Intent(StageSelection.this,Stage1.class);
                     startActivity(intent);
+                    finish();
                 }
-                      else  if(view.getId()==R.id.btnStage2){
+                      else  if(view.getId()==R.id.btnStage2&&scoreInfo.getInt("score1",0)!=0){
                           isNext=true;
                           intent= new Intent(StageSelection.this,Stage2.class);
                           startActivity(intent);
+                          finish();
                       }
-                      else  if(view.getId()==R.id.btnStage3){
+                      else  if(view.getId()==R.id.btnStage3&&scoreInfo.getInt("score2",0)!=0){
                           isNext=true;
                           intent= new Intent(StageSelection.this,Stage3.class);
                           startActivity(intent);
+                          finish();
                       }
-                      else  if(view.getId()==R.id.btnStage4){
+                      else  if(view.getId()==R.id.btnStage4&&scoreInfo.getInt("score3",0)!=0){
                           isNext=true;
                           intent= new Intent(StageSelection.this,Stage4.class);
                           startActivity(intent);
+                          finish();
                       }
-                      else  if(view.getId()==R.id.btnStage5){
+                      else  if(view.getId()==R.id.btnStage5&&scoreInfo.getInt("score4",0)!=0){
                           isNext=true;
                           intent= new Intent(StageSelection.this,Stage5.class);
                           startActivity(intent);
+                          finish();
                       }
-                      else  if(view.getId()==R.id.btnStage6){
+                      else  if(view.getId()==R.id.btnStage6&&scoreInfo.getInt("score5",0)!=0){
                           isNext=true;
                           intent= new Intent(StageSelection.this,Stage6.class);
                           startActivity(intent);
+                          finish();
                       }
-                      else  if(view.getId()==R.id.btnStage7){
+                      else  if(view.getId()==R.id.btnStage7&&scoreInfo.getInt("score6",0)!=0){
                           isNext=true;
                           intent= new Intent(StageSelection.this,Stage7.class);
                           startActivity(intent);
+                          finish();
                       }
-                      else  if(view.getId()==R.id.btnStage8){
+                      else  if(view.getId()==R.id.btnStage8&&scoreInfo.getInt("score7",0)!=0){
                           isNext=true;
                           intent= new Intent(StageSelection.this,Stage8.class);
                           startActivity(intent);
+                          finish();
                       }
-                      else  if(view.getId()==R.id.btnStage9){
+                      else  if(view.getId()==R.id.btnStage9&&scoreInfo.getInt("score8",0)!=0){
                           isNext=true;
                           intent= new Intent(StageSelection.this,Stage9.class);
                           startActivity(intent);
+                          finish();
                       }
-                      else  if(view.getId()==R.id.btnStage10){
+                      else  if(view.getId()==R.id.btnStage10&&scoreInfo.getInt("score9",0)!=0){
                           isNext=true;
                           intent= new Intent(StageSelection.this,Stage10.class);
                           startActivity(intent);
+                          finish();
                       }//add stage lock if score=0 or not exist
-                     finish();
+
             }
         };
         timer.schedule(task, 500);}

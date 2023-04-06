@@ -27,7 +27,7 @@
     <string name="TimerStart">00:00</string>
     <string name="Restart">restart</string>
 
-    <string name="stage_title1">No.1\nWhat is the character between \nA and C?</string>
+    <string name="stage_title1">No.1\nWhat is the character between \nA and D?</string>
     <string name="stage_title2">No.2\nWaiting Modification in XML</string>
     <string name="stage_title3">No.3\nWaiting Modification in XML</string>
     <string name="stage_title4">No.4\nWaiting Modification in XML</string>
@@ -37,6 +37,10 @@
     <string name="stage_title8">No.8\nWaiting Modification in XML</string>
     <string name="stage_title9">No.9\nWaiting Modification in XML</string>
     <string name="stage_title10">No.10\nWaiting Modification in XML</string>
+
+
+    <string name="stage1_selection1">B</string>
+    <string name="stage1_selection2">C</string>
 
 
 </resources>

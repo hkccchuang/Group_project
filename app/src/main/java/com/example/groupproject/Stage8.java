@@ -82,10 +82,15 @@ public class Stage8 extends Stage {//should change the name when copy
 
         if(!isFastDoubleClick()) {
 
-            if(view.getId()==R.id.btnBack||view.getId()==R.id.win){ btnBack.startAnimation(rotate); chronometer.startAnimation(rotate);
-                btnRestart.startAnimation(rotate);btnHint.startAnimation(rotate);title.startAnimation(toLeft);}//animation
 
-            sp.play(soundEffect, 0.3f, 0.3f, 0, 0, 1);//sound
+            if(view.getId()==R.id.btnBack){ btnBack.startAnimation(rotate); chronometer.startAnimation(rotate);
+                btnRestart.startAnimation(rotate);btnHint.startAnimation(rotate);title.startAnimation(toLeft);}//animation
+            else if(view.getId()==R.id.win){
+                beforeNextStage();
+                intent=new Intent(Stage8.this,Stage9.class);//Next level!
+                nextStageDialog();
+            }
+
 
             TimerTask task = new TimerTask() {
                 public void run() {
@@ -95,13 +100,7 @@ public class Stage8 extends Stage {//should change the name when copy
                         finish();
                     }//case back
 
-                    if(view.getId()==R.id.win){
-                        beforeNextStage();
-                        intent=new Intent(Stage8.this,Stage9.class);//Next level!
-                        finish();
-                        overridePendingTransition(0,0);//no animation for reset,can add a animation
-                        startActivity(intent);
-                    }
+
 
 
 

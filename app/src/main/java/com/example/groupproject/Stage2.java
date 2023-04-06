@@ -81,11 +81,14 @@ public class Stage2 extends Stage {//should change the name when copy
     public void onClick(View view) {
 
         if(!isFastDoubleClick()) {
-
-            if(view.getId()==R.id.btnBack||view.getId()==R.id.win){ btnBack.startAnimation(rotate); chronometer.startAnimation(rotate);
+            if(view.getId()==R.id.btnBack){ btnBack.startAnimation(rotate); chronometer.startAnimation(rotate);
                 btnRestart.startAnimation(rotate);btnHint.startAnimation(rotate);title.startAnimation(toLeft);}//animation
+            else if(view.getId()==R.id.win){
+                beforeNextStage();
+                intent=new Intent(Stage2.this,Stage3.class);//Next level!
+                nextStageDialog();
+            }
 
-            sp.play(soundEffect, 0.3f, 0.3f, 0, 0, 1);//sound
 
             TimerTask task = new TimerTask() {
                 public void run() {
@@ -94,17 +97,6 @@ public class Stage2 extends Stage {//should change the name when copy
                     if(view.getId()==R.id.btnBack){
                         finish();
                     }//case back
-
-                    if(view.getId()==R.id.win){
-                        beforeNextStage();
-                        intent=new Intent(Stage2.this,Stage3.class);//Next level!
-                        finish();
-                        overridePendingTransition(0,0);//no animation for reset,can add a animation
-                        startActivity(intent);
-                    }
-
-
-
 
 
                 }

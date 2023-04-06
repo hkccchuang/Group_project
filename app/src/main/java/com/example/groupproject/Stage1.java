@@ -83,11 +83,15 @@ public class Stage1 extends Stage {
 
             int id=view.getId();
 
-            if(id==R.id.btnBack||id==R.id.win){ btnBack.startAnimation(rotate); chronometer.startAnimation(rotate);
-            btnRestart.startAnimation(rotate);btnHint.startAnimation(rotate);title.startAnimation(toLeft);}//animation
-
-            sp.play(soundEffect, 0.3f, 0.3f, 0, 0, 1);//sound
-
+           //sound
+            if(id==R.id.btnBack){ btnBack.startAnimation(rotate); chronometer.startAnimation(rotate);
+            btnRestart.startAnimation(rotate);btnHint.startAnimation(rotate);title.startAnimation(toLeft);
+}//sound//animation
+            else if(id==R.id.win){
+                beforeNextStage();
+                intent=new Intent(Stage1.this,Stage2.class);//Next level!
+                nextStageDialog();
+            }
             TimerTask task = new TimerTask() {
                 public void run() {
 
@@ -95,29 +99,21 @@ public class Stage1 extends Stage {
                     if(id==R.id.btnBack){
                         finish();
                     }//case back
-                    if(id==R.id.win){
-                        beforeNextStage();
-                        intent=new Intent(Stage1.this,Stage2.class);//Next level!
-                        finish();
-                        overridePendingTransition(0,0);//no animation for reset,can add a animation
-                        startActivity(intent);
-                    }
-
-
 
 
                 }
             };
-            timer.schedule(task, 600);
+            timer.schedule(task, 500);
 
                 if (id==R.id.btnHint){
 
-                giveHint("literally");
+                    giveHint("literally");
 
             }
                 else if(id==R.id.btnRestart){
                     resetStage();
                 }
+
 
 
         }
