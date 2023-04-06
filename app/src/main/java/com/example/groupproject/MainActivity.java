@@ -19,7 +19,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener,Animation.AnimationListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener,Animation.AnimationListener{//Test Test
 
     public static MediaPlayer mMediaPlayer = new MediaPlayer();//BGM
     public   SoundPool sp;//sound effect for button
