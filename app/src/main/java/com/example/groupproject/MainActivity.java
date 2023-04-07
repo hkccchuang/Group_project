@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static long lastClickTime = 0;//prevent fast clicking
 
      public Intent next;//to next activity
-     ImageButton start,contin,score;
+     ImageButton start,contin,score,login;
 
      Boolean isNext=false;//If user go to other intent,music will not be pause
      Timer timer=new Timer();//for showing sound effect and animation
@@ -77,6 +77,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         contin.setOnClickListener(this);
         score=findViewById(R.id.btnScore);
         score.setOnClickListener(this);
+        login=findViewById(R.id.btnLogin);
+        login.setOnClickListener(this);
         userInfo=getSharedPreferences("userName",MODE_PRIVATE);
         editor=userInfo.edit();
 
@@ -137,6 +139,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                          next = new Intent(MainActivity.this, ScoreBoard.class);
                          isNext = true;
                          startActivity(next);
+                     }
+                     else if(view.getId()==R.id.btnLogin){
+                         next = new Intent(MainActivity.this, Login.class);
+                         isNext = true;
+                         startActivity(next);
+
                      }
 
                  }

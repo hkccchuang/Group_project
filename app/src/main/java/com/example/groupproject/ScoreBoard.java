@@ -2,6 +2,7 @@ package com.example.groupproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
@@ -166,6 +167,7 @@ public class ScoreBoard extends AppCompatActivity implements View.OnClickListene
 
     }
 
+    @SuppressLint("SuspiciousIndentation")
     public void sorting_UpLoad(){//topx_score the key of preferences for score storage,
                                 // topx_name is the key of preferences for name storage
                                 // userName store the user data which are using the app now score1-10 for each stage score

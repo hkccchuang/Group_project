@@ -37,6 +37,10 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
     public   SoundPool sp;//sound effect
     int soundEffect;
 
+
+
+    int totalScore;
+
     String username;
 
     private static long lastClickTime = 0;
@@ -45,8 +49,8 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
 
     Boolean isNext = false;
 
-    SharedPreferences userInfo;//user information storage
-    SharedPreferences.Editor editor;
+    SharedPreferences userInfo,stageLock;//user information storage
+    SharedPreferences.Editor editor,lockEditor;
 
     boolean isDelete=false;
 
@@ -137,7 +141,10 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
 
                     editor.putString("name",username);
 
+                    upload();
                     editor.commit();
+
+
                     //upload score here
                     finish();
                     startActivity(intent);// Successful case.User name not null but this is the first user then go to stage selection
@@ -150,6 +157,7 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
 
                     editor.putString("name",username);
 
+                    upload();
                     editor.commit();
                     //upload score here
                     finish();
@@ -225,6 +233,48 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
     protected void onDestroy(){
         super.onDestroy();
         sp.release();//release sound pool
+    }
+
+    public void upload(){
+
+        stageLock=getSharedPreferences(userInfo.getString("name",""),MODE_PRIVATE);
+        lockEditor=stageLock.edit();
+
+        if(userInfo.getString("name","0")!="0"){
+        lockEditor.putString("name",userInfo.getString("name","0"));} //upload a file by using the user name
+
+        if(userInfo.getInt("score1",0)!=0){//upload score data
+            lockEditor.putInt("score1",userInfo.getInt("score1",0));
+        }
+        if(userInfo.getInt("score2",0)!=0){//upload score data
+            lockEditor.putInt("score2",userInfo.getInt("score2",0));
+        }
+        if(userInfo.getInt("score3",0)!=0){//upload score data
+            lockEditor.putInt("score3",userInfo.getInt("score3",0));
+        }
+        if(userInfo.getInt("score4",0)!=0){//upload score data
+            lockEditor.putInt("score4",userInfo.getInt("score4",0));
+        }
+        if(userInfo.getInt("score5",0)!=0){//upload score data
+            lockEditor.putInt("score5",userInfo.getInt("score5",0));
+        }
+        if(userInfo.getInt("score6",0)!=0){//upload score data
+            lockEditor.putInt("score6",userInfo.getInt("score6",0));
+        }
+        if(userInfo.getInt("score7",0)!=0){//upload score data
+            lockEditor.putInt("score7",userInfo.getInt("score7",0));
+        }
+        if(userInfo.getInt("score8",0)!=0){//upload score data
+            lockEditor.putInt("score8",userInfo.getInt("score8",0));
+        }
+        if(userInfo.getInt("score9",0)!=0){//upload score data
+            lockEditor.putInt("score9",userInfo.getInt("score9",0));
+        }
+        if(userInfo.getInt("score10",0)!=0){//upload score data
+            lockEditor.putInt("score10",userInfo.getInt("score10",0));
+        }
+
+        lockEditor.commit();
     }
 
 }
