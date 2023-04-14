@@ -195,5 +195,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         userInfo=getSharedPreferences("userName",MODE_PRIVATE);
         editor=userInfo.edit();
         editor.clear();
+        editor.commit();
     }//pretend a new user for testing
 }

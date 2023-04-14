@@ -101,6 +101,8 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
 
+        stageLock=getSharedPreferences(editUserName.getText().toString(),MODE_PRIVATE);
+
         if(!isFastDoubleClick()){
 
         sp.play(soundEffect, 0.3f, 0.3f, 0, 0, 1);//confirm.mp3
@@ -119,6 +121,11 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
                     finish();//Go back to main menu
 
                 }
+                else if(stageLock.getString("name","0")!="0"||editUserName.getText().toString().equals(userInfo.getString("name","0"))){
+                    editUserName.setText("");
+                    editUserName.setHint("Already exist");
+                    // Fail case. Hint for invalid name
+                }
                 else if(view.getId()==R.id.btnConfirm&&editUserName.getText().toString().isEmpty()!=true
                         &&userInfo.getString("name","0")!="0"&&!isDelete){
                      //clean the before user data
@@ -132,6 +139,7 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
                 else if(editUserName.getText().toString().isEmpty()){
                     editUserName.setHint("Invalid");// Fail case. Hint for invalid name
                 }
+
                 else if(view.getId()==R.id.btnConfirm&&userInfo.getString("name","0")=="0"){
                     intent =new Intent(UserRegister.this,StageSelection.class);
 
