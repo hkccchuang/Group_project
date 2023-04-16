@@ -45,10 +45,6 @@ public class Stage1 extends Stage {
         startChronometer();
     }
 
-    public void loadSound(){
-        sp= new SoundPool(1000, AudioManager.STREAM_SYSTEM, 5);
-        soundEffect = sp.load(this, R.raw.wood_hit, 1);//confirm.mp3
-    }
 
 
     public void loadAnimation(){
@@ -78,6 +74,8 @@ public class Stage1 extends Stage {
 
 
     public void onClick(View view) {
+
+
 
         if(!isFastDoubleClick()) {
 

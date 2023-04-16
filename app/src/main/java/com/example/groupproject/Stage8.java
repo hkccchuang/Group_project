@@ -44,10 +44,7 @@ public class Stage8 extends Stage {//should change the name when copy
         startChronometer();
     }
 
-    public void loadSound(){
-        sp= new SoundPool(1000, AudioManager.STREAM_SYSTEM, 5);
-        soundEffect = sp.load(this, R.raw.wood_hit, 1);//confirm.mp3
-    }
+
 
 
     public void loadAnimation(){

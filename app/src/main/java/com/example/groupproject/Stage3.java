@@ -2,23 +2,28 @@ package com.example.groupproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Stage3 extends Stage {//should change the name when copy
+public class Stage3 extends Stage implements View.OnTouchListener {//should change the name when copy
 
     ImageButton btnBack,btnHint,btnRestart;
     Animation rotate,toLeft;
@@ -28,6 +33,11 @@ public class Stage3 extends Stage {//should change the name when copy
     TextView title;
 
     Timer timer=new Timer();
+    EditText answer;
+    ImageView apple,apple1,apple2;
+    float x=0;
+    float y=0;
+
 
 
 
@@ -44,10 +54,7 @@ public class Stage3 extends Stage {//should change the name when copy
         startChronometer();
     }
 
-    public void loadSound(){
-        sp= new SoundPool(1000, AudioManager.STREAM_SYSTEM, 5);
-        soundEffect = sp.load(this, R.raw.wood_hit, 1);//confirm.mp3
-    }
+
 
 
     public void loadAnimation(){
@@ -65,9 +72,14 @@ public class Stage3 extends Stage {//should change the name when copy
         title=findViewById(R.id.stage_title);
         btnRestart=findViewById(R.id.btnRestart);
         win=findViewById(R.id.win);
+        answer=findViewById(R.id.answerEdit);
+        apple1=findViewById(R.id.apple1);
+        apple=findViewById(R.id.apple);
 
 
 
+        apple1.setOnTouchListener(this);
+        apple.setOnTouchListener(this);
         btnBack.setOnClickListener(this);
         btnHint.setOnClickListener(this);
         btnRestart.setOnClickListener(this);
@@ -85,11 +97,15 @@ public class Stage3 extends Stage {//should change the name when copy
 
             if(view.getId()==R.id.btnBack){ btnBack.startAnimation(rotate); chronometer.startAnimation(rotate);
                 btnRestart.startAnimation(rotate);btnHint.startAnimation(rotate);title.startAnimation(toLeft);}//animation
-            else if(view.getId()==R.id.win){
+
+            try{
+            if(view.getId()==R.id.win&&Integer.valueOf(answer.getText().toString())==3&&answer.getText()!=null){
                 beforeNextStage();
                 intent=new Intent(Stage3.this,Stage4.class);//Next level!
                 nextStageDialog();
-            }//successful case
+            }}
+            catch (NumberFormatException e){}//successful case
+
 
 
             TimerTask task = new TimerTask() {
@@ -110,7 +126,7 @@ public class Stage3 extends Stage {//should change the name when copy
 
             if (view.getId()==R.id.btnHint){
 
-                giveHint("literally");
+                giveHint("Behind");
 
             }
             else if(view.getId()==R.id.btnRestart){
@@ -123,4 +139,32 @@ public class Stage3 extends Stage {//should change the name when copy
     }
 
 
+
+
+    @Override
+    public boolean onTouch(View view, MotionEvent event) {
+
+        if(event.getAction()==MotionEvent.ACTION_DOWN){
+            x=event.getX();
+            y=event.getY();
+        }
+
+        if(event.getAction()==MotionEvent.ACTION_MOVE){
+            dx=event.getX()-x;
+            dy=event.getY()-y;
+            view.setX(view.getX()+dx);
+            view.setY(view.getY()+dy);
+            x=event.getX();
+            y=event.getY();
+        }
+
+        return  true;
+
+    }
+
+    public boolean onTouchEvent(MotionEvent event) {
+        InputMethodManager im = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        im.hideSoftInputFromWindow(getCurrentFocus().getApplicationWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        return super.onTouchEvent(event);
+    }//hide the keyboard when touch the screen
 }

@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Temporary</string>
 
+    <string name="greeting">Hello</string>
+
     <string name="contentDescription1">Start</string>
     <string name="contentDescription2">Continue</string>
     <string name="contentDescription3">Score</string>
@@ -14,24 +16,38 @@
     <string name="scroll">scroll</string>
 
     <string name="stage1">1</string>
+
     <string name="stage2">2</string>
+    <string name="S2_I1">234</string>
+    <string name="S2_I2">101</string>
+    <string name="S2_I3">2^2</string>
+
     <string name="stage3">3</string>
+    <string name="S3_default">0</string>
+
     <string name="stage4">4</string>
+
     <string name="stage5">5</string>
+
     <string name="stage6">6</string>
+
     <string name="stage7">7</string>
+
     <string name="stage8">8</string>
+
     <string name="stage9">9</string>
+
     <string name="stage10">10</string>
+
 
     <string name="TimerStart">00:00</string>
     <string name="Restart">restart</string>
 
     <string name="stage_title1">No.1\nWhat is the character between \nA and D?</string>
-    <string name="stage_title2">No.2\nWaiting Modification in XML</string>
-    <string name="stage_title3">No.3\nWaiting Modification in XML</string>
-    <string name="stage_title4">No.4\nWaiting Modification in XML</string>
-    <string name="stage_title5">No.5\nWaiting Modification in XML</string>
+    <string name="stage_title2">No.2\nFind the biggest number</string>
+    <string name="stage_title3">No.3\nHow many apple?</string>
+    <string name="stage_title4">No.4\nHit</string>
+    <string name="stage_title5">No.5\nRolling the box</string>
     <string name="stage_title6">No.6\nWaiting Modification in XML</string>
     <string name="stage_title7">No.7\nWaiting Modification in XML</string>
     <string name="stage_title8">No.8\nWaiting Modification in XML</string>

@@ -22,13 +22,14 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Timer;
 
 public class Stage extends AppCompatActivity implements View.OnClickListener, Animation.AnimationListener {
      // Only a Class for extends,Not a real Stage
-    int basicScore=200,bonusScore=200;//Max score = 400 per stage,one second=bonusScore-2
+    int basicScore=200,bonusScore=400;//Max score = 400 per stage,one second=bonusScore-2
     int totalScore=0;
     public SharedPreferences userScore,userRanking;//score storage
     public SharedPreferences.Editor editor;
@@ -56,6 +57,8 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
     int stageNumber;//key of ranking
     Intent intent;
 
+    float x,y,dx,dy;//for drag event,change position for image
+
 
 
 
@@ -74,6 +77,9 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
 
 
     public void loadSound(){
+
+        this.sp= new SoundPool(10, AudioManager.STREAM_SYSTEM, 5);
+        this.soundEffect = this.sp.load(this, R.raw.cheer, 1);
 
     }
 
@@ -223,6 +229,7 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
 
     public void nextStageDialog(){
 
+        sp.play(soundEffect, 0.3f, 0.3f, 0, 0, 1);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Congratulation!!");  //設置標題
         builder.setIcon(R.mipmap.ic_launcher_round); //標題前面那個小圖示
@@ -261,10 +268,13 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
 
         editorRanking=userRanking.edit();
         editor=userScore.edit();
+        editorRanking=userRanking.edit();
 
         name=userScore.getString("name","0");
         totalScore=0+userScore.getInt("score1",0)+userScore.getInt("score2",0)+userScore.getInt("score3",0)+userScore.getInt("score4",0)+userScore.getInt("score5",0)+userScore.getInt("score6",0)+userScore.getInt("score7",0)
                 +userScore.getInt("score8",0)+userScore.getInt("score9",0)+userScore.getInt("score10",0);//get data from user which is playing now
+
+
 
         if(userRanking.getInt("top1_score",0)!=0)
             ranking_score[1]=userRanking.getInt("top1_score",0);
@@ -307,43 +317,51 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
 
         //A WTF way to get top10 data from ranking.xml. if top1_ not nul,top1=top1
         // -------------------------------------------------------------------
-        //Case 1:same name
-        if(name==userRanking.getString("top1_name","")&&totalScore>=userRanking.getInt("top1_score",0)){
+
+
+        if(userRanking.getInt("top1_score", 0) <= totalScore&&userRanking.getString("top1_name","0").equals(name)){
             editorRanking.putInt("top1_score", totalScore);
             editorRanking.putString("top1_name", name);
         }
-        else  if(name==userRanking.getString("top2_name","")&&totalScore>=userRanking.getInt("top2_score",0)){
+        else if(userRanking.getInt("top2_score", 0) <= totalScore&&userRanking.getString("top2_name","0").equals(name)){
             editorRanking.putInt("top2_score", totalScore);
-            editorRanking.putString("top2_name", name);}
-        else  if(name==userRanking.getString("top3_name","")&&totalScore>=userRanking.getInt("top3_score",0)){
+            editorRanking.putString("top2_name", name);
+        }
+        else if(userRanking.getInt("top3_score", 0) <= totalScore&&userRanking.getString("top3_name","0").equals(name)){
             editorRanking.putInt("top3_score", totalScore);
-            editorRanking.putString("top3_name", name);}
-        else  if(name==userRanking.getString("top4_name","")&&totalScore>=userRanking.getInt("top4_score",0)){
+            editorRanking.putString("top3_name", name);
+        }
+        else if(userRanking.getInt("top4_score", 0) <= totalScore&&userRanking.getString("top4_name","0").equals(name)){
             editorRanking.putInt("top4_score", totalScore);
-            editorRanking.putString("top4_name", name);}
-        else  if(name==userRanking.getString("top5_name","")&&totalScore>=userRanking.getInt("top5_score",0)){
+            editorRanking.putString("top4_name", name);
+        }
+        else if(userRanking.getInt("top5_score", 0) <= totalScore&&userRanking.getString("top5_name","0").equals(name)){
             editorRanking.putInt("top5_score", totalScore);
-            editorRanking.putString("top5_name", name);}
-        else  if(name==userRanking.getString("top6_name","")&&totalScore>=userRanking.getInt("top6_score",0)){
+            editorRanking.putString("top5_name", name);
+        }
+        else if(userRanking.getInt("top6_score", 0) <= totalScore&&userRanking.getString("top6_name","0").equals(name)){
             editorRanking.putInt("top6_score", totalScore);
-            editorRanking.putString("top6_name", name);}
-        else  if(name==userRanking.getString("top7_name","")&&totalScore>=userRanking.getInt("top7_score",0)){
+            editorRanking.putString("top6_name", name);
+        }
+        else if(userRanking.getInt("top7_score", 0) <= totalScore&&userRanking.getString("top7_name","0").equals(name)){
             editorRanking.putInt("top7_score", totalScore);
-            editorRanking.putString("top7_name", name);}
-        else  if(name==userRanking.getString("top8_name","")&&totalScore>=userRanking.getInt("top8_score",0)){
+            editorRanking.putString("top7_name", name);
+        }
+        else if(userRanking.getInt("top8_score", 0) <= totalScore&&userRanking.getString("top8_name","0").equals(name)){
             editorRanking.putInt("top8_score", totalScore);
-            editorRanking.putString("top8_name", name);}
-        else  if(name==userRanking.getString("top9_name","")&&totalScore>=userRanking.getInt("top9_score",0)){
+            editorRanking.putString("top8_name", name);
+        }
+        else if(userRanking.getInt("top9_score", 0) <= totalScore&&userRanking.getString("top9_name","0").equals(name)){
             editorRanking.putInt("top9_score", totalScore);
-            editorRanking.putString("top9_name", name);}
-        else  if(name==userRanking.getString("top10_name","")&&totalScore>=userRanking.getInt("top10_score",0)){
+            editorRanking.putString("top9_name", name);
+        }
+        else if(userRanking.getInt("top10_score", 0) <= totalScore&&userRanking.getString("top10_name","0").equals(name)){
             editorRanking.putInt("top10_score", totalScore);
-            editorRanking.putString("top10_name", name);}
+            editorRanking.putString("top10_name", name);
+        }
+        else if (userRanking.getInt("top1_score", 0) <= totalScore) {
 
-        //Case2:not the same name
-        else  if (userRanking.getInt("top1_score", 0) <= totalScore) {
-
-            if(userRanking.getString("top2_name","0")!=name){
+            if(!userRanking.getString("top1_name","0").equals(name)){
                 editorRanking.putInt("top2_score", ranking_score[1]);
                 editorRanking.putString("top2_name", ranking_name[1]);}
 
@@ -384,7 +402,7 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
         }
         else if (userRanking.getInt("top2_score", 0) <= totalScore) {
 
-            if(userRanking.getString("top3_name","0")!=name){
+            if(!userRanking.getString("top2_name","0").equals(name)){
                 editorRanking.putInt("top3_score", ranking_score[2]);
                 editorRanking.putString("top3_name", ranking_name[2]);}
 
@@ -421,7 +439,7 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
             editorRanking.putString("top2_name", name);
         } else if (userRanking.getInt("top3_score", 0) <= totalScore) {
 
-            if(userRanking.getString("top4_name","0")!=name){
+            if(!userRanking.getString("top3_name","0").equals(name)){
                 editorRanking.putInt("top4_score", ranking_score[3]);
                 editorRanking.putString("top4_name", ranking_name[3]);}
 
@@ -454,7 +472,7 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
             editorRanking.putString("top3_name", name);
         } else if (userRanking.getInt("top4_score", 0) <= totalScore) {
 
-            if(userRanking.getString("top5_name","0")!=name){
+            if(!userRanking.getString("top4_name","0").equals(name)){
                 editorRanking.putInt("top5_score", ranking_score[4]);
                 editorRanking.putString("top5_name", ranking_name[4]);}
 
@@ -482,7 +500,7 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
             editorRanking.putString("top4_name", name);
         } else if (userRanking.getInt("top5_score", 0) <= totalScore) {
 
-            if(userRanking.getString("top6_name","0")!=name){
+            if(!userRanking.getString("top5_name","0").equals(name)){
                 editorRanking.putInt("top6_score", ranking_score[5]);
                 editorRanking.putString("top6_name", ranking_name[5]);}
 
@@ -506,7 +524,7 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
             editorRanking.putString("top5_name", name);
         } else if (userRanking.getInt("top6_score", 0) <= totalScore) {
 
-            if(userRanking.getString("top7_name","0")!=name){
+            if(!userRanking.getString("top6_name","0").equals(name)){
                 editorRanking.putInt("top7_score", ranking_score[6]);
                 editorRanking.putString("top7_name", ranking_name[6]);}
 
@@ -526,7 +544,7 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
             editorRanking.putString("top6_name", name);
         } else if (userRanking.getInt("top7score", 0) <= totalScore) {
 
-            if(userRanking.getString("top8_name","0")!=name){
+            if(!userRanking.getString("top7_name","0").equals(name)){
                 editorRanking.putInt("top8_score", ranking_score[7]);
                 editorRanking.putString("top8_name", ranking_name[7]);}
 
@@ -542,7 +560,7 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
             editorRanking.putString("top7_name", name);
         } else if (userRanking.getInt("top8_score", 0) <= totalScore) {
 
-            if(userRanking.getString("top9_name","0")!=name){
+            if(!userRanking.getString("top8_name","0").equals(name)){
                 editorRanking.putInt("top9_score", ranking_score[8]);
                 editorRanking.putString("top9_name", ranking_name[8]);}
 
@@ -554,7 +572,9 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
             editorRanking.putString("top8_name", name);
         } else if (userRanking.getInt("top9_score", 0) <= totalScore) {
 
-            if(userRanking.getInt("top10_score",0)!=0){
+
+
+            if(!userRanking.getString("top9_name","0").equals(name)){
                 editorRanking.putInt("top10_score", ranking_score[9]);
                 editorRanking.putString("top10_name", ranking_name[9]);}
 
@@ -567,6 +587,7 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
         }
 
 
+
         //-----------------------------------------------------------------------------------------------------
         // A WTF way for sorting,
         // if the user score >=top1 then user become top1
@@ -577,6 +598,8 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
 
         editorRanking.commit();
     editor.commit();}
+
+
 
 
 }

@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Timer;
@@ -23,11 +24,15 @@ public class Stage4 extends Stage {//should change the name when copy
     ImageButton btnBack,btnHint,btnRestart;
     Animation rotate,toLeft;
 
-    Button win;
+   ImageView egg;
 
     TextView title;
 
     Timer timer=new Timer();
+
+    int count=0;
+
+
 
 
 
@@ -44,10 +49,7 @@ public class Stage4 extends Stage {//should change the name when copy
         startChronometer();
     }
 
-    public void loadSound(){
-        sp= new SoundPool(1000, AudioManager.STREAM_SYSTEM, 5);
-        soundEffect = sp.load(this, R.raw.wood_hit, 1);//confirm.mp3
-    }
+
 
 
     public void loadAnimation(){
@@ -64,32 +66,40 @@ public class Stage4 extends Stage {//should change the name when copy
         btnHint=findViewById(R.id.btnHint);
         title=findViewById(R.id.stage_title);
         btnRestart=findViewById(R.id.btnRestart);
-        win=findViewById(R.id.win);
+        egg=findViewById(R.id.egg);
 
 
 
+        egg.setOnClickListener(this);
         btnBack.setOnClickListener(this);
         btnHint.setOnClickListener(this);
         btnRestart.setOnClickListener(this);
-        win.setOnClickListener(this);
+
 
         scoreNumber="score4";//score number score+12345678910
         stageNumber=4;//stage number stage+12345678910 //should change the name when copy
     }
 
 
+
+
     public void onClick(View view) {
+
+        if(view.getId()==R.id.egg){count=count+1;}
+        if(view.getId()==R.id.egg&&count>=10){egg.setImageResource(R.drawable.brokenegg);}
+        if(view.getId()==R.id.egg&&count>=12){
+
+            beforeNextStage();
+            intent=new Intent(Stage4.this,Stage5.class);//Next level!
+            nextStageDialog();}
+
 
         if(!isFastDoubleClick()) {
 
 
             if(view.getId()==R.id.btnBack){ btnBack.startAnimation(rotate); chronometer.startAnimation(rotate);
                 btnRestart.startAnimation(rotate);btnHint.startAnimation(rotate);title.startAnimation(toLeft);}//animation
-            else if(view.getId()==R.id.win){
-                beforeNextStage();
-                intent=new Intent(Stage4.this,Stage5.class);//Next level!
-                nextStageDialog();
-            }
+
 
 
             TimerTask task = new TimerTask() {
@@ -108,7 +118,7 @@ public class Stage4 extends Stage {//should change the name when copy
 
             if (view.getId()==R.id.btnHint){
 
-                giveHint("literally");
+                giveHint("Hit the egg 10 times");
 
             }
             else if(view.getId()==R.id.btnRestart){

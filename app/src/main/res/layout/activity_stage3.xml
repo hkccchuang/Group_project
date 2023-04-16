@@ -71,13 +71,58 @@
         android:id="@+id/win"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="@+id/stage_title"
-        app:layout_constraintEnd_toEndOf="@+id/stage_title"
-        app:layout_constraintHorizontal_bias="0.119"
-        app:layout_constraintStart_toStartOf="@+id/stage_title"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.909" />
+        android:layout_marginTop="400dp"
+        android:layout_marginBottom="30dp"
+        android:text="Submit"
+        app:layout_constraintBottom_toTopOf="@+id/chronometer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stage_title" />
+
+    <EditText
+        android:id="@+id/answerEdit"
+        android:layout_width="241dp"
+        android:layout_height="59dp"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="@string/S3_default"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/win"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/apple1"
+        android:layout_width="117dp"
+        android:layout_height="103dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stage_title"
+        app:srcCompat="@drawable/apple" />
+
+    <ImageView
+        android:id="@+id/apple2"
+        android:layout_width="117dp"
+        android:layout_height="103dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stage_title"
+        app:srcCompat="@drawable/apple" />
+
+    <ImageView
+        android:id="@+id/apple"
+        android:layout_width="117dp"
+        android:layout_height="103dp"
+        android:layout_marginStart="250dp"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stage_title"
+        app:srcCompat="@drawable/apple" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

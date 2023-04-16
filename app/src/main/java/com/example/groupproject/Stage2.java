@@ -25,7 +25,7 @@ public class Stage2 extends Stage {//should change the name when copy
 
    Button win;
 
-    TextView title;
+    TextView title,answer;
 
     Timer timer=new Timer();
 
@@ -44,10 +44,7 @@ public class Stage2 extends Stage {//should change the name when copy
         startChronometer();
     }
 
-    public void loadSound(){
-        sp= new SoundPool(1000, AudioManager.STREAM_SYSTEM, 5);
-        soundEffect = sp.load(this, R.raw.wood_hit, 1);//confirm.mp3
-    }
+
 
 
     public void loadAnimation(){
@@ -64,14 +61,17 @@ public class Stage2 extends Stage {//should change the name when copy
         btnHint=findViewById(R.id.btnHint);
         title=findViewById(R.id.stage_title);
         btnRestart=findViewById(R.id.btnRestart);
-        win=findViewById(R.id.win);
+
+
+        answer=findViewById(R.id.real);
+        answer.setOnClickListener(this);
 
 
 
         btnBack.setOnClickListener(this);
         btnHint.setOnClickListener(this);
         btnRestart.setOnClickListener(this);
-        win.setOnClickListener(this);
+
 
         scoreNumber="score2";//score number score+12345678910
         stageNumber=2;//stage number stage+12345678910 //should change the name when copy
@@ -83,7 +83,7 @@ public class Stage2 extends Stage {//should change the name when copy
         if(!isFastDoubleClick()) {
             if(view.getId()==R.id.btnBack){ btnBack.startAnimation(rotate); chronometer.startAnimation(rotate);
                 btnRestart.startAnimation(rotate);btnHint.startAnimation(rotate);title.startAnimation(toLeft);}//animation
-            else if(view.getId()==R.id.win){
+            else if(view.getId()==R.id.real){
                 beforeNextStage();
                 intent=new Intent(Stage2.this,Stage3.class);//Next level!
                 nextStageDialog();
@@ -105,7 +105,7 @@ public class Stage2 extends Stage {//should change the name when copy
 
             if (view.getId()==R.id.btnHint){
 
-                giveHint("literally");
+                giveHint("The size");
 
             }
             else if(view.getId()==R.id.btnRestart){

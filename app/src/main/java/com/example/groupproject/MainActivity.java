@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -41,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public static int[] scoreTotal; //store all the score for a single user
     public static int[] ranking;//ranking for all the user
+
+    TextView greeting;
 
 
     @Override
@@ -82,6 +85,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         userInfo=getSharedPreferences("userName",MODE_PRIVATE);
         editor=userInfo.edit();
 
+        greeting=findViewById(R.id.greeting);
+
+
     }
     public void loadAnimation()
     {animRotateRight= AnimationUtils.loadAnimation(this,R.anim.rotate_right);
@@ -102,6 +108,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     protected void onResume(){
         super.onResume();
+        if(userInfo.getString("name","0")!="0"){
+            greeting.setText("Hello"+"  "+userInfo.getString("name","0"));
+        }//greeting
         isNext=false;
         mMediaPlayer.start();
 
