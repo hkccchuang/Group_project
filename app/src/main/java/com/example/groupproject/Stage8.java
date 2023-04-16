@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -28,6 +29,7 @@ public class Stage8 extends Stage {//should change the name when copy
     TextView title;
 
     Timer timer=new Timer();
+    EditText answer;
 
 
 
@@ -62,7 +64,7 @@ public class Stage8 extends Stage {//should change the name when copy
         title=findViewById(R.id.stage_title);
         btnRestart=findViewById(R.id.btnRestart);
         win=findViewById(R.id.win);
-
+        answer=findViewById(R.id.answer);
 
 
         btnBack.setOnClickListener(this);
@@ -82,11 +84,19 @@ public class Stage8 extends Stage {//should change the name when copy
 
             if(view.getId()==R.id.btnBack){ btnBack.startAnimation(rotate); chronometer.startAnimation(rotate);
                 btnRestart.startAnimation(rotate);btnHint.startAnimation(rotate);title.startAnimation(toLeft);}//animation
-            else if(view.getId()==R.id.win){
+
+            try {
+
+
+            if(view.getId()==R.id.win&&Integer.valueOf(answer.getText().toString())==stageNumber){
                 beforeNextStage();
                 intent=new Intent(Stage8.this,Stage9.class);//Next level!
                 nextStageDialog();
             }
+            else if(view.getId()==R.id.win){giveHint("Not correct");}
+            }
+            catch (NumberFormatException e){}
+
 
 
             TimerTask task = new TimerTask() {
@@ -109,7 +119,7 @@ public class Stage8 extends Stage {//should change the name when copy
 
             if (view.getId()==R.id.btnHint){
 
-                giveHint("literally");
+                giveHint("What is the number of last level?");
 
             }
             else if(view.getId()==R.id.btnRestart){

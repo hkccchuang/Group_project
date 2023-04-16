@@ -28,6 +28,7 @@ public class Stage10 extends Stage {//should change the name when copy
     TextView title;
 
     Timer timer=new Timer();
+    int count=0;
 
 
 
@@ -61,14 +62,11 @@ public class Stage10 extends Stage {//should change the name when copy
         btnHint=findViewById(R.id.btnHint);
         title=findViewById(R.id.stage_title);
         btnRestart=findViewById(R.id.btnRestart);
-        win=findViewById(R.id.win);
-
-
 
         btnBack.setOnClickListener(this);
         btnHint.setOnClickListener(this);
         btnRestart.setOnClickListener(this);
-        win.setOnClickListener(this);
+
 
         scoreNumber="score10";//score number score+12345678910
         stageNumber=10;//stage number stage+12345678910 //should change the name when copy
@@ -81,11 +79,7 @@ public class Stage10 extends Stage {//should change the name when copy
 
             if(view.getId()==R.id.btnBack){ btnBack.startAnimation(rotate); chronometer.startAnimation(rotate);
                 btnRestart.startAnimation(rotate);btnHint.startAnimation(rotate);title.startAnimation(toLeft);}//animation
-            else if(view.getId()==R.id.win){
-                beforeNextStage();
-                intent=new Intent(Stage10.this,StageSelection.class);//Next level!
-                nextStageDialog();
-            }
+
 
 
             TimerTask task = new TimerTask() {
@@ -103,7 +97,7 @@ public class Stage10 extends Stage {//should change the name when copy
 
             if (view.getId()==R.id.btnHint){
 
-                giveHint("literally");
+                giveHint("pause");
 
             }
             else if(view.getId()==R.id.btnRestart){
@@ -115,5 +109,29 @@ public class Stage10 extends Stage {//should change the name when copy
 
     }
 
+    protected void onResume(){
+        super.onResume();
+        if(count==1){   beforeNextStage();
+            intent=new Intent(Stage10.this,StageSelection.class);//Next level!
+            nextStageDialog();}
+        loadSound();
+        startChronometer();
+        MainActivity.mMediaPlayer.start();
+        isNext=false;
+
+    }
+
+    protected void onPause(){
+        super.onPause();
+        pauseChronometer();
+        count++;
+        sorting_UpLoad();//upload data to ranking
+        sp.release();
+        //editor.commit;
+        if(!isNext){
+            MainActivity.mMediaPlayer.pause();
+            //If user go to other intent,music will not be pause
+        }
+    }
 
 }

@@ -8,11 +8,13 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Timer;
@@ -28,6 +30,7 @@ public class Stage9 extends Stage {//should change the name when copy
     TextView title;
 
     Timer timer=new Timer();
+    ImageView noise;
 
 
 
@@ -61,14 +64,15 @@ public class Stage9 extends Stage {//should change the name when copy
         btnHint=findViewById(R.id.btnHint);
         title=findViewById(R.id.stage_title);
         btnRestart=findViewById(R.id.btnRestart);
-        win=findViewById(R.id.win);
+        noise=findViewById(R.id.noise);
+
 
 
 
         btnBack.setOnClickListener(this);
         btnHint.setOnClickListener(this);
         btnRestart.setOnClickListener(this);
-        win.setOnClickListener(this);
+
 
         scoreNumber="score9";//score number score+12345678910
         stageNumber=9;//stage number stage+12345678910 //should change the name when copy
@@ -82,11 +86,7 @@ public class Stage9 extends Stage {//should change the name when copy
 
             if(view.getId()==R.id.btnBack){ btnBack.startAnimation(rotate); chronometer.startAnimation(rotate);
                 btnRestart.startAnimation(rotate);btnHint.startAnimation(rotate);title.startAnimation(toLeft);}//animation
-            else if(view.getId()==R.id.win){
-                beforeNextStage();
-                intent=new Intent(Stage9.this,Stage10.class);//Next level!
-                nextStageDialog();
-            }
+
 
 
             TimerTask task = new TimerTask() {
@@ -104,7 +104,7 @@ public class Stage9 extends Stage {//should change the name when copy
 
             if (view.getId()==R.id.btnHint){
 
-                giveHint("literally");
+                giveHint("volume down");
 
             }
             else if(view.getId()==R.id.btnRestart){
@@ -116,5 +116,15 @@ public class Stage9 extends Stage {//should change the name when copy
 
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
 
+    if(keyCode==KeyEvent.KEYCODE_VOLUME_DOWN){
+        beforeNextStage();
+        intent=new Intent(Stage9.this,Stage10.class);//Next level!
+        nextStageDialog();
+    }
+
+        return super.onKeyDown(keyCode, event);
+    }
 }

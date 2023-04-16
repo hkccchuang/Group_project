@@ -71,13 +71,25 @@
         android:id="@+id/win"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="@+id/stage_title"
-        app:layout_constraintEnd_toEndOf="@+id/stage_title"
-        app:layout_constraintHorizontal_bias="0.119"
-        app:layout_constraintStart_toStartOf="@+id/stage_title"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.909" />
+        android:layout_marginTop="400dp"
+        android:text="submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stage_title" />
+
+    <EditText
+        android:id="@+id/answer"
+        android:layout_width="227dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="330dp"
+        android:ems="10"
+        android:hint="0"
+        android:inputType="number"
+        android:maxLength="2"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stage_title" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

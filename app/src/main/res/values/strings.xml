@@ -48,11 +48,11 @@
     <string name="stage_title3">No.3\nHow many apple?</string>
     <string name="stage_title4">No.4\nHit</string>
     <string name="stage_title5">No.5\nRolling the box</string>
-    <string name="stage_title6">No.6\nWaiting Modification in XML</string>
-    <string name="stage_title7">No.7\nWaiting Modification in XML</string>
-    <string name="stage_title8">No.8\nWaiting Modification in XML</string>
-    <string name="stage_title9">No.9\nWaiting Modification in XML</string>
-    <string name="stage_title10">No.10\nWaiting Modification in XML</string>
+    <string name="stage_title6">No.6\nWhat is the hours?</string>
+    <string name="stage_title7">No.7\nPatience</string>
+    <string name="stage_title8">No.7\nWhat is the level number?</string>
+    <string name="stage_title9">No.9\nQuiet</string>
+    <string name="stage_title10">No.10\nPause</string>
 
 
     <string name="stage1_selection1">B</string>
