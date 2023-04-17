@@ -11,9 +11,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="@string/stage_title4"
-        android:textAlignment="center"
         android:gravity="center_horizontal"
+        android:text="@string/stage_title5"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="23sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,11 +49,11 @@
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/hint"
+        android:contentDescription="hint"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hint"
-        android:contentDescription="hint"/>
+        app:srcCompat="@drawable/hint" />
 
     <ImageButton
         android:id="@+id/btnRestart"
@@ -68,15 +68,16 @@
         app:srcCompat="@drawable/restart" />
 
     <ImageView
-        android:id="@+id/egg"
-        android:layout_width="215dp"
-        android:layout_height="276dp"
-        android:layout_marginTop="100dp"
+        android:id="@+id/imageView"
+        android:layout_width="247dp"
+        android:layout_height="238dp"
+        android:layout_marginTop="96dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stage_title"
-        app:srcCompat="@drawable/egg" />
+        app:srcCompat="@drawable/box" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -86,8 +86,8 @@ public class Stage4 extends Stage {//should change the name when copy
     public void onClick(View view) {
 
         if(view.getId()==R.id.egg){count=count+1;}
-        if(view.getId()==R.id.egg&&count>=10){egg.setImageResource(R.drawable.brokenegg);}
-        if(view.getId()==R.id.egg&&count>=12){
+        if(view.getId()==R.id.egg&&count==10){egg.setImageResource(R.drawable.brokenegg);}
+        if(view.getId()==R.id.egg&&count==12){
 
             beforeNextStage();
             intent=new Intent(Stage4.this,Stage5.class);//Next level!

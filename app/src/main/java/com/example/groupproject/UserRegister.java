@@ -113,8 +113,7 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
                 editUserName.getText().toString().isEmpty()!=true)
         {image.startAnimation(toLeft);editUserName.startAnimation(toLeft);}//animation
 
-        TimerTask task = new TimerTask() {
-            public void run() {
+
 
                 if(view.getId()==R.id.btnCancel||view.getId()==R.id.btnCancel2){
 
@@ -176,8 +175,8 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
                 }
 
             }
-        };
-        timer.schedule(task, 200);}
+
+
     }
 
     @Override

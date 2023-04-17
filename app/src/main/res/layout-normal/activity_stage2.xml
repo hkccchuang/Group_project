@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="@string/stage_title4"
+        android:text="@string/stage_title2"
         android:textAlignment="center"
         android:gravity="center_horizontal"
         android:textColor="@color/black"
@@ -36,7 +36,7 @@
         android:id="@+id/chronometer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="50dp"
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,16 +67,41 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/restart" />
 
-    <ImageView
-        android:id="@+id/egg"
-        android:layout_width="215dp"
-        android:layout_height="276dp"
-        android:layout_marginTop="100dp"
-        android:scaleType="fitXY"
+    <TextView
+        android:id="@+id/false1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="180dp"
+        android:text="@string/S2_I1"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toStartOf="@+id/false2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stage_title" />
+
+    <TextView
+        android:id="@+id/real"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/S2_I2"
+        android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stage_title"
-        app:srcCompat="@drawable/egg" />
+        app:layout_constraintTop_toBottomOf="@+id/stage_title" />
+
+    <TextView
+        android:id="@+id/false2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:text="@string/S2_I3"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.612"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stage_title" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

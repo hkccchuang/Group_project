@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="@string/stage_title4"
+        android:text="@string/stage_title3"
         android:textAlignment="center"
         android:gravity="center_horizontal"
         android:textColor="@color/black"
@@ -36,7 +36,7 @@
         android:id="@+id/chronometer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="28dp"
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,24 +59,71 @@
         android:id="@+id/btnRestart"
         android:layout_width="101dp"
         android:layout_height="79dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:background="@drawable/restart"
         android:contentDescription="@string/Restart"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toStartOf="@+id/btnHint"
+        app:layout_constraintHorizontal_bias="0.298"
         app:layout_constraintStart_toEndOf="@+id/btnBack"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/restart" />
 
+    <Button
+        android:id="@+id/win"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="Submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/answerEdit" />
+
+    <EditText
+        android:id="@+id/answerEdit"
+        android:layout_width="108dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/S3_default"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/apple1" />
+
     <ImageView
-        android:id="@+id/egg"
-        android:layout_width="215dp"
-        android:layout_height="276dp"
+        android:id="@+id/apple1"
+        android:layout_width="117dp"
+        android:layout_height="103dp"
         android:layout_marginTop="100dp"
-        android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stage_title"
-        app:srcCompat="@drawable/egg" />
+        app:srcCompat="@drawable/apple" />
+
+    <ImageView
+        android:id="@+id/apple2"
+        android:layout_width="117dp"
+        android:layout_height="103dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stage_title"
+        app:srcCompat="@drawable/apple" />
+
+    <ImageView
+        android:id="@+id/apple"
+        android:layout_width="117dp"
+        android:layout_height="103dp"
+        android:layout_marginStart="250dp"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stage_title"
+        app:srcCompat="@drawable/apple" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -36,7 +36,7 @@
         android:id="@+id/chronometer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="100dp"
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,11 +72,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="103dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/chronometer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stage_title"
-        app:srcCompat="@drawable/box"
-        android:scaleType="fitXY"/>
+        app:srcCompat="@drawable/box" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

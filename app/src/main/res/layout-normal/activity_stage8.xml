@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="@string/stage_title4"
+        android:text="@string/stage_title8"
         android:textAlignment="center"
         android:gravity="center_horizontal"
         android:textColor="@color/black"
@@ -67,16 +67,29 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/restart" />
 
-    <ImageView
-        android:id="@+id/egg"
-        android:layout_width="215dp"
-        android:layout_height="276dp"
-        android:layout_marginTop="100dp"
-        android:scaleType="fitXY"
+    <Button
+        android:id="@+id/win"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stage_title"
-        app:srcCompat="@drawable/egg" />
+        app:layout_constraintTop_toBottomOf="@+id/answer" />
+
+    <EditText
+        android:id="@+id/answer"
+        android:layout_width="227dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="132dp"
+        android:ems="10"
+        android:hint="0"
+        android:inputType="number"
+        android:maxLength="2"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stage_title" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

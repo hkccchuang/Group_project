@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="@string/stage_title4"
+        android:text="@string/stage_title9"
         android:textAlignment="center"
         android:gravity="center_horizontal"
         android:textColor="@color/black"
@@ -68,15 +68,15 @@
         app:srcCompat="@drawable/restart" />
 
     <ImageView
-        android:id="@+id/egg"
-        android:layout_width="215dp"
-        android:layout_height="276dp"
-        android:layout_marginTop="100dp"
+        android:id="@+id/noise"
+        android:layout_width="96dp"
+        android:layout_height="92dp"
+        android:layout_marginTop="176dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stage_title"
-        app:srcCompat="@drawable/egg" />
+        app:layout_constraintTop_toBottomOf="@+id/btnRestart"
+        app:srcCompat="@android:drawable/ic_lock_silent_mode" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

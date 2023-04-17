@@ -10,14 +10,16 @@
         android:id="@+id/btnStart"
         android:layout_width="291dp"
         android:layout_height="119dp"
+        android:layout_marginTop="100dp"
         android:background="@drawable/btn_start"
         android:contentDescription="@string/contentDescription1"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/greeting"
-        app:layout_constraintVertical_bias="0.347"
+        app:layout_constraintVertical_bias="0.322"
         app:srcCompat="@drawable/btn_start"
         tools:ignore="SpeakableTextPresentCheck" />
 

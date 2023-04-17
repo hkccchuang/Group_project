@@ -131,7 +131,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener,Ani
 
                     }
 
-                    if(isExist(editUserName.getText().toString())&&userInfo.getString("name","0")!=editUserName.getText().toString()){
+                    else if(isExist(editUserName.getText().toString())&&userInfo.getString("name","0")!=editUserName.getText().toString()){
                         editor.clear();
                         editor.commit();
                         upload();
@@ -139,7 +139,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener,Ani
                         downLoad(editUserName.getText().toString());
                         finish(); //case 1
                     }
-                    else if(!isExist(editUserName.getText().toString())){
+                    else if(view.getId()!=R.id.btnCancel&&!isExist(editUserName.getText().toString())){
                         editUserName.setText("");
                         editUserName.setHint("Not exist or already login");
                     }
