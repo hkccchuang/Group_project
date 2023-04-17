@@ -62,8 +62,8 @@
         android:background="@drawable/restart"
         android:contentDescription="@string/Restart"
         android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="@+id/btnHint"
-        app:layout_constraintStart_toStartOf="@+id/btnBack"
+        app:layout_constraintEnd_toStartOf="@+id/btnHint"
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/restart" />
 
@@ -72,11 +72,12 @@
         android:layout_width="215dp"
         android:layout_height="276dp"
         android:layout_marginTop="100dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/chronometer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stage_title"
-        app:srcCompat="@drawable/egg"
-        android:scaleType="fitXY"/>
+        app:srcCompat="@drawable/egg" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

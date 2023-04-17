@@ -59,11 +59,14 @@
         android:id="@+id/btnRestart"
         android:layout_width="101dp"
         android:layout_height="79dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
         android:background="@drawable/restart"
         android:contentDescription="@string/Restart"
         android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="@+id/btnHint"
-        app:layout_constraintStart_toStartOf="@+id/btnBack"
+        app:layout_constraintEnd_toStartOf="@+id/btnHint"
+        app:layout_constraintHorizontal_bias="0.298"
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/restart" />
 
@@ -83,14 +86,16 @@
         android:id="@+id/answerEdit"
         android:layout_width="241dp"
         android:layout_height="59dp"
+        android:layout_marginTop="200dp"
         android:layout_marginBottom="10dp"
         android:ems="10"
-        android:inputType="number"
         android:hint="@string/S3_default"
+        android:inputType="number"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/win"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/apple1" />
 
     <ImageView
         android:id="@+id/apple1"

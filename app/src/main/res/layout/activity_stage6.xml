@@ -62,8 +62,8 @@
         android:background="@drawable/restart"
         android:contentDescription="@string/Restart"
         android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="@+id/btnHint"
-        app:layout_constraintStart_toStartOf="@+id/btnBack"
+        app:layout_constraintEnd_toStartOf="@+id/btnHint"
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/restart" />
 
@@ -73,6 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="400dp"
         android:text="submit"
+        app:layout_constraintBottom_toTopOf="@+id/chronometer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stage_title" />
@@ -90,15 +91,15 @@
 
     <EditText
         android:id="@+id/answerEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="227dp"
+        android:layout_height="56dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="34dp"
         android:ems="10"
-        android:inputType="number"
         android:hint="0"
-        android:textAlignment="center"
+        android:inputType="number"
         android:maxLength="2"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/win"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

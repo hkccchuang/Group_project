@@ -62,8 +62,8 @@
         android:background="@drawable/restart"
         android:contentDescription="@string/Restart"
         android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="@+id/btnHint"
-        app:layout_constraintStart_toStartOf="@+id/btnBack"
+        app:layout_constraintEnd_toStartOf="@+id/btnHint"
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/restart" />
 
@@ -71,11 +71,12 @@
         android:id="@+id/false1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="200dp"
         android:text="@string/S2_I1"
         android:textSize="48sp"
+        app:layout_constraintEnd_toStartOf="@+id/false2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stage_title" />
 
@@ -83,11 +84,10 @@
         android:id="@+id/real"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="130dp"
-        android:layout_marginLeft="130dp"
         android:layout_marginTop="50dp"
         android:text="@string/S2_I2"
         android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stage_title" />
 
@@ -95,11 +95,11 @@
         android:id="@+id/false2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="250dp"
-        android:layout_marginLeft="250dp"
         android:layout_marginTop="200dp"
         android:text="@string/S2_I3"
         android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.612"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stage_title" />
 

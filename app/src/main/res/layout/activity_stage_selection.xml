@@ -51,6 +51,9 @@
                 android:id="@+id/stage9"
                 android:layout_width="183dp"
                 android:layout_height="183dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                app:layout_constraintEnd_toStartOf="@+id/stage10"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stage7"
                 app:srcCompat="@drawable/stage" />
@@ -67,6 +70,9 @@
                 android:id="@+id/stage7"
                 android:layout_width="183dp"
                 android:layout_height="183dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                app:layout_constraintEnd_toStartOf="@+id/stage8"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stage5"
                 app:srcCompat="@drawable/stage" />
@@ -83,6 +89,9 @@
                 android:id="@+id/stage5"
                 android:layout_width="183dp"
                 android:layout_height="183dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                app:layout_constraintEnd_toStartOf="@+id/stage6"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stage3"
                 app:srcCompat="@drawable/stage" />
@@ -99,6 +108,9 @@
                 android:id="@+id/stage3"
                 android:layout_width="183dp"
                 android:layout_height="183dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                app:layout_constraintEnd_toStartOf="@+id/stage4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stage1"
                 app:srcCompat="@drawable/stage" />
@@ -115,7 +127,10 @@
                 android:id="@+id/stage1"
                 android:layout_width="183dp"
                 android:layout_height="183dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
                 android:contentDescription="@string/stage1"
+                app:layout_constraintEnd_toStartOf="@+id/stage2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/stage" />
