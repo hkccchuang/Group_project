@@ -2,6 +2,7 @@ package com.example.groupproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -98,6 +99,7 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
         fadeOut.setAnimationListener(this);
     }
 
+
     @Override
     public void onClick(View view) {
 
@@ -109,8 +111,7 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
 
         if (view.getId() == R.id.btnCancel||view.getId()==R.id.btnCancel2)
         {image.startAnimation(toRight);editUserName.startAnimation(toRight);}
-        if(view.getId()==R.id.btnConfirm&&
-                editUserName.getText().toString().isEmpty()!=true)
+        if(view.getId()==R.id.btnConfirm&&editUserName.getText().toString().isEmpty()!=true)
         {image.startAnimation(toLeft);editUserName.startAnimation(toLeft);}//animation
 
 

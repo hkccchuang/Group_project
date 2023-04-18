@@ -157,9 +157,7 @@ public class Stage3 extends Stage implements View.OnTouchListener {//should chan
             x=event.getX();
             y=event.getY();
         }
-
         return  true;
-
     }
 
     public boolean onTouchEvent(MotionEvent event) {

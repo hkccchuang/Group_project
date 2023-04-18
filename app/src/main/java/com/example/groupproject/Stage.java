@@ -191,7 +191,6 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
         editor.putInt(getScoreNumber(),countHighestScore());
         editor.commit();
         } //only record the highest score for a stage
-
     }
 
     public void resetStage(){
@@ -200,7 +199,6 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
         finish();
         overridePendingTransition(0,0);//no animation for reset,can add a animation
         startActivity(intent);
-
     }
 
     public String getScoreNumber(){
@@ -217,8 +215,6 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
             builder.setTitle("This is a Hint");
             builder.setIcon(R.mipmap.ic_launcher_round); //icon
             builder.setMessage(hint);
-
-
             builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
@@ -228,7 +224,6 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
             });
 
             builder.create().show();
-
     }//give a dialog for show some hint
 
     public void nextStageDialog(){

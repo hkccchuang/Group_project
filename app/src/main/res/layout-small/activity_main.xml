@@ -7,9 +7,25 @@
     tools:context=".MainActivity">
 
     <ImageButton
+        android:id="@+id/btnScore"
+        android:layout_width="225dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/btn_score"
+        android:contentDescription="@string/contentDescription3"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnContinue"
+        app:layout_constraintVertical_bias="0.063"
+        app:srcCompat="@drawable/btn_score"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
         android:id="@+id/btnStart"
-        android:layout_width="291dp"
-        android:layout_height="119dp"
+        android:layout_width="226dp"
+        android:layout_height="73dp"
         android:background="@drawable/btn_start"
         android:contentDescription="@string/contentDescription1"
         android:scaleType="fitXY"
@@ -18,17 +34,17 @@
         app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/greeting"
-        app:layout_constraintVertical_bias="0.295"
+        app:layout_constraintVertical_bias="0.179"
         app:srcCompat="@drawable/btn_start"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/btnContinue"
-        android:layout_width="291dp"
-        android:layout_height="119dp"
+        android:layout_width="239dp"
+        android:layout_height="76dp"
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="60dp"
         android:layout_marginRight="60dp"
         android:background="@drawable/btn_continue"
@@ -38,22 +54,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnStart"
         app:srcCompat="@drawable/btn_continue"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <ImageButton
-        android:id="@+id/btnScore"
-        android:layout_width="291dp"
-        android:layout_height="119dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/btn_score"
-        android:contentDescription="@string/contentDescription3"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnContinue"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/btn_score"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
