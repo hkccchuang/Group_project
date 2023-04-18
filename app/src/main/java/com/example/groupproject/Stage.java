@@ -25,6 +25,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Timer;
 
 public class Stage extends AppCompatActivity implements View.OnClickListener, Animation.AnimationListener {
@@ -112,7 +115,8 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
     protected void onPause(){
         super.onPause();
         pauseChronometer();
-        sorting_UpLoad();//upload data to ranking
+        sorting_UpLoad();
+       //upload data to ranking
         sp.release();
         //editor.commit;
         if(!isNext){
@@ -267,8 +271,6 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
         userRanking=getSharedPreferences("ranking",MODE_PRIVATE);
 
         editorRanking=userRanking.edit();
-        editor=userScore.edit();
-        editorRanking=userRanking.edit();
 
         name=userScore.getString("name","0");
         totalScore=0+userScore.getInt("score1",0)+userScore.getInt("score2",0)+userScore.getInt("score3",0)+userScore.getInt("score4",0)+userScore.getInt("score5",0)+userScore.getInt("score6",0)+userScore.getInt("score7",0)
@@ -276,315 +278,283 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
 
 
 
+
+
         if(userRanking.getInt("top1_score",0)!=0)
             ranking_score[1]=userRanking.getInt("top1_score",0);
+        else ranking_score[1]=0;
+
         if(userRanking.getInt("top2_score",0)!=0)
             ranking_score[2]=userRanking.getInt("top2_score",0);
+        else ranking_score[2]=0;
+
         if(userRanking.getInt("top3_score",0)!=0)
             ranking_score[3]=userRanking.getInt("top3_score",0);
+        else ranking_score[3]=0;
+
         if(userRanking.getInt("top4_score",0)!=0)
             ranking_score[4]=userRanking.getInt("top4_score",0);
+        else ranking_score[4]=0;
+
         if(userRanking.getInt("top5_score",0)!=0)
             ranking_score[5]=userRanking.getInt("top5_score",0);
+        else ranking_score[5]=0;
+
         if(userRanking.getInt("top6_score",0)!=0)
             ranking_score[6]=userRanking.getInt("top6_score",0);
+        else ranking_score[6]=0;
+
         if(userRanking.getInt("top7_score",0)!=0)
             ranking_score[7]=userRanking.getInt("top7_score",0);
+        else ranking_score[7]=0;
+
         if(userRanking.getInt("top8_score",0)!=0)
             ranking_score[8]=userRanking.getInt("top8_score",0);
+        else ranking_score[8]=0;
+
         if(userRanking.getInt("top9_score",0)!=0)
             ranking_score[9]=userRanking.getInt("top9_score",0);
+        else ranking_score[9]=0;
+
+        if(userRanking.getInt("top10_score",0)!=0)
+            ranking_score[10]=userRanking.getInt("top10_score",0);
+        else ranking_score[10]=0;
 
 
         if(userRanking.getString("top1_name","0")!="0")
             ranking_name[1]=userRanking.getString("top1_name","");
+        else ranking_name[1]="";
+
         if(userRanking.getString("top2_name","0")!="0")
             ranking_name[2]=userRanking.getString("top2_name","");
+        else ranking_name[2]="";
+
         if(userRanking.getString("top3_name","0")!="0")
             ranking_name[3]=userRanking.getString("top3_name","");
+        else ranking_name[3]="";
+
         if(userRanking.getString("top4_name","0")!="0")
             ranking_name[4]=userRanking.getString("top4_name","");
+        else ranking_name[4]="";
+
         if(userRanking.getString("top5_name","0")!="0")
             ranking_name[5]=userRanking.getString("top5_name","");
+        else ranking_name[5]="";
+
         if(userRanking.getString("top6_name","0")!="0")
             ranking_name[6]=userRanking.getString("top6_name","");
+        else ranking_name[6]="";
+
         if(userRanking.getString("top7_name","0")!="0")
             ranking_name[7]=userRanking.getString("top7_name","");
+        else ranking_name[7]="";
+
         if(userRanking.getString("top8_name","0")!="0")
             ranking_name[8]=userRanking.getString("top8_name","");
+        else ranking_name[8]="";
+
         if(userRanking.getString("top9_name","0")!="0")
             ranking_name[9]=userRanking.getString("top9_name","");
+        else ranking_name[9]="";
 
-        //A WTF way to get top10 data from ranking.xml. if top1_ not nul,top1=top1
-        // -------------------------------------------------------------------
+        if(userRanking.getString("top10_name","0")!="0")
+            ranking_name[10]=userRanking.getString("top10_name","");
+        else ranking_name[10]="";
 
 
-        if(userRanking.getInt("top1_score", 0) <= totalScore&&userRanking.getString("top1_name","0").equals(name)){
-            editorRanking.putInt("top1_score", totalScore);
-            editorRanking.putString("top1_name", name);
+
+
+
+       User user1 = new User( ranking_name[1],  ranking_score[1]);//top1
+       User user2 = new User( ranking_name[2],  ranking_score[2]);
+       User user3 = new User( ranking_name[3],  ranking_score[3]);
+       User user4 = new User( ranking_name[4],  ranking_score[4]);
+       User user5 = new User( ranking_name[5],  ranking_score[5]);
+       User user6 = new User( ranking_name[6],  ranking_score[6]);
+       User user7 = new User( ranking_name[7],  ranking_score[7]);
+       User user8 = new User( ranking_name[8],  ranking_score[8]);
+       User user9 = new User( ranking_name[9],  ranking_score[9]);
+       User user10 = new User( ranking_name[10],  ranking_score[10]);
+       User user11 = new User(name,  totalScore);//top10
+
+
+
+        List<User> users = new ArrayList<>();
+
+        //if it is a new user
+        if(     !ranking_name[1].equals(name)&&
+                !ranking_name[2].equals(name)&&
+                !ranking_name[3].equals(name)&&
+                !ranking_name[4].equals(name)&&
+                !ranking_name[5].equals(name)&&
+                !ranking_name[6].equals(name)&&
+                !ranking_name[7].equals(name)&&
+                !ranking_name[8].equals(name)&&
+                !ranking_name[9].equals(name)&&
+                !ranking_name[10].equals(name)){
+        users.add(user1);
+        users.add(user2);
+        users.add(user3);
+        users.add(user4);
+        users.add(user5);
+        users.add(user6);
+        users.add(user7);
+        users.add(user8);
+        users.add(user9);
+        users.add(user10);
+        users.add(user11);
+        } else if (ranking_name[1].equals(name)) { // not new
+            user1.setName(name);
+            user1.setScore(totalScore);
+            users.add(user1);
+            users.add(user2);
+            users.add(user3);
+            users.add(user4);
+            users.add(user5);
+            users.add(user6);
+            users.add(user7);
+            users.add(user8);
+            users.add(user9);
+            users.add(user10);
         }
-        else if(userRanking.getInt("top2_score", 0) <= totalScore&&userRanking.getString("top2_name","0").equals(name)){
-            editorRanking.putInt("top2_score", totalScore);
-            editorRanking.putString("top2_name", name);
+        else if (ranking_name[2].equals(name)) {
+            user2.setName(name);
+            user2.setScore(totalScore);
+            users.add(user1);
+            users.add(user2);
+            users.add(user3);
+            users.add(user4);
+            users.add(user5);
+            users.add(user6);
+            users.add(user7);
+            users.add(user8);
+            users.add(user9);
+            users.add(user10);
         }
-        else if(userRanking.getInt("top3_score", 0) <= totalScore&&userRanking.getString("top3_name","0").equals(name)){
-            editorRanking.putInt("top3_score", totalScore);
-            editorRanking.putString("top3_name", name);
+        else if (ranking_name[3].equals(name)) {
+            user3.setName(name);
+            user3.setScore(totalScore);
+            users.add(user1);
+            users.add(user2);
+            users.add(user3);
+            users.add(user4);
+            users.add(user5);
+            users.add(user6);
+            users.add(user7);
+            users.add(user8);
+            users.add(user9);
+            users.add(user10);
         }
-        else if(userRanking.getInt("top4_score", 0) <= totalScore&&userRanking.getString("top4_name","0").equals(name)){
-            editorRanking.putInt("top4_score", totalScore);
-            editorRanking.putString("top4_name", name);
+        else if (ranking_name[4].equals(name)) {
+            user4.setName(name);
+            user4.setScore(totalScore);
+            users.add(user1);
+            users.add(user2);
+            users.add(user3);
+            users.add(user4);
+            users.add(user5);
+            users.add(user6);
+            users.add(user7);
+            users.add(user8);
+            users.add(user9);
+            users.add(user10);
         }
-        else if(userRanking.getInt("top5_score", 0) <= totalScore&&userRanking.getString("top5_name","0").equals(name)){
-            editorRanking.putInt("top5_score", totalScore);
-            editorRanking.putString("top5_name", name);
+        else if (ranking_name[5].equals(name)) {
+            user5.setName(name);
+            user5.setScore(totalScore);
+            users.add(user1);
+            users.add(user2);
+            users.add(user3);
+            users.add(user4);
+            users.add(user5);
+            users.add(user6);
+            users.add(user7);
+            users.add(user8);
+            users.add(user9);
+            users.add(user10);
         }
-        else if(userRanking.getInt("top6_score", 0) <= totalScore&&userRanking.getString("top6_name","0").equals(name)){
-            editorRanking.putInt("top6_score", totalScore);
-            editorRanking.putString("top6_name", name);
+        else if (ranking_name[6].equals(name)) {
+            user6.setName(name);
+            user6.setScore(totalScore);
+            users.add(user1);
+            users.add(user2);
+            users.add(user3);
+            users.add(user4);
+            users.add(user5);
+            users.add(user6);
+            users.add(user7);
+            users.add(user8);
+            users.add(user9);
+            users.add(user10);
         }
-        else if(userRanking.getInt("top7_score", 0) <= totalScore&&userRanking.getString("top7_name","0").equals(name)){
-            editorRanking.putInt("top7_score", totalScore);
-            editorRanking.putString("top7_name", name);
+        else if (ranking_name[7].equals(name)) {
+            user7.setName(name);
+            user7.setScore(totalScore);
+            users.add(user1);
+            users.add(user2);
+            users.add(user3);
+            users.add(user4);
+            users.add(user5);
+            users.add(user6);
+            users.add(user7);
+            users.add(user8);
+            users.add(user9);
+            users.add(user10);
         }
-        else if(userRanking.getInt("top8_score", 0) <= totalScore&&userRanking.getString("top8_name","0").equals(name)){
-            editorRanking.putInt("top8_score", totalScore);
-            editorRanking.putString("top8_name", name);
+        else if (ranking_name[8].equals(name)) {
+            user8.setName(name);
+            user8.setScore(totalScore);
+            users.add(user1);
+            users.add(user2);
+            users.add(user3);
+            users.add(user4);
+            users.add(user5);
+            users.add(user6);
+            users.add(user7);
+            users.add(user8);
+            users.add(user9);
+            users.add(user10);
         }
-        else if(userRanking.getInt("top9_score", 0) <= totalScore&&userRanking.getString("top9_name","0").equals(name)){
-            editorRanking.putInt("top9_score", totalScore);
-            editorRanking.putString("top9_name", name);
+        else if (ranking_name[9].equals(name)) {
+            user9.setName(name);
+            user9.setScore(totalScore);
+            users.add(user1);
+            users.add(user2);
+            users.add(user3);
+            users.add(user4);
+            users.add(user5);
+            users.add(user6);
+            users.add(user7);
+            users.add(user8);
+            users.add(user9);
+            users.add(user10);
         }
-        else if(userRanking.getInt("top10_score", 0) <= totalScore&&userRanking.getString("top10_name","0").equals(name)){
-            editorRanking.putInt("top10_score", totalScore);
-            editorRanking.putString("top10_name", name);
+        else if (ranking_name[10].equals(name)) {
+            user10.setName(name);
+            user10.setScore(totalScore);
+            users.add(user1);
+            users.add(user2);
+            users.add(user3);
+            users.add(user4);
+            users.add(user5);
+            users.add(user6);
+            users.add(user7);
+            users.add(user8);
+            users.add(user9);
+            users.add(user10);
         }
-        else if (userRanking.getInt("top1_score", 0) <= totalScore) {
 
-            if(!userRanking.getString("top1_name","0").equals(name)){
-                editorRanking.putInt("top2_score", ranking_score[1]);
-                editorRanking.putString("top2_name", ranking_name[1]);}
+        Collections.sort(users);
 
-            if(userRanking.getInt("top3_score",0)!=0){
-                editorRanking.putInt("top3_score", ranking_score[2]);
-                editorRanking.putString("top3_name", ranking_name[2]);}
-
-            if(userRanking.getInt("top4_score",0)!=0){
-                editorRanking.putInt("top4_score", ranking_score[3]);
-                editorRanking.putString("top4_name", ranking_name[3]);}
-
-            if(userRanking.getInt("top5_score",0)!=0){
-                editorRanking.putInt("top5_score", ranking_score[4]);
-                editorRanking.putString("top5_name", ranking_name[4]);}
-
-            if(userRanking.getInt("top6_score",0)!=0){
-                editorRanking.putInt("top6_score", ranking_score[5]);
-                editorRanking.putString("top6_name", ranking_name[5]);}
-
-            if(userRanking.getInt("top7_score",0)!=0){
-                editorRanking.putInt("top7_score", ranking_score[6]);
-                editorRanking.putString("top7_name", ranking_name[6]);}
-
-            if(userRanking.getInt("top8_score",0)!=0){
-                editorRanking.putInt("top8_score", ranking_score[7]);
-                editorRanking.putString("top8_name", ranking_name[7]);}
-
-            if(userRanking.getInt("top9_score",0)!=0){
-                editorRanking.putInt("top9_score", ranking_score[8]);
-                editorRanking.putString("top9_name", ranking_name[8]);}
-
-            if(userRanking.getInt("top10_score",0)!=0){
-                editorRanking.putInt("top10_score", ranking_score[9]);
-                editorRanking.putString("top10_name", ranking_name[9]);}
-
-            editorRanking.putInt("top1_score", totalScore);
-            editorRanking.putString("top1_name", name);
+        for(int i = 0;i < users.size(); i ++){
+            String name = "top"+String.valueOf(users.size()-i)+"_name";
+            String score = "top"+String.valueOf(users.size()-i)+"_score";
+            editorRanking.putString(name,users.get(i).getName());
+            editorRanking.putInt(score,users.get(i).getScore());
         }
-        else if (userRanking.getInt("top2_score", 0) <= totalScore) {
 
-            if(!userRanking.getString("top2_name","0").equals(name)){
-                editorRanking.putInt("top3_score", ranking_score[2]);
-                editorRanking.putString("top3_name", ranking_name[2]);}
+        editorRanking.commit();
 
-            if(userRanking.getInt("top4_score",0)!=0){
-                editorRanking.putInt("top4_score", ranking_score[3]);
-                editorRanking.putString("top4_name", ranking_name[3]);}
-
-            if(userRanking.getInt("top5_score",0)!=0){
-                editorRanking.putInt("top5_score", ranking_score[4]);
-                editorRanking.putString("top5_name", ranking_name[4]);}
-
-            if(userRanking.getInt("top6_score",0)!=0){
-                editorRanking.putInt("top6_score", ranking_score[5]);
-                editorRanking.putString("top6_name", ranking_name[5]);}
-
-            if(userRanking.getInt("top7_score",0)!=0){
-                editorRanking.putInt("top7_score", ranking_score[6]);
-                editorRanking.putString("top7_name", ranking_name[6]);}
-
-            if(userRanking.getInt("top8_score",0)!=0){
-                editorRanking.putInt("top8_score", ranking_score[7]);
-                editorRanking.putString("top8_name", ranking_name[7]);}
-
-            if(userRanking.getInt("top9_score",0)!=0){
-                editorRanking.putInt("top9_score", ranking_score[8]);
-                editorRanking.putString("top9_name", ranking_name[8]);}
-
-            if(userRanking.getInt("top10_score",0)!=0){
-                editorRanking.putInt("top10_score", ranking_score[9]);
-                editorRanking.putString("top10_name", ranking_name[9]);}
-
-
-            editorRanking.putInt("top2_score", totalScore);
-            editorRanking.putString("top2_name", name);
-        } else if (userRanking.getInt("top3_score", 0) <= totalScore) {
-
-            if(!userRanking.getString("top3_name","0").equals(name)){
-                editorRanking.putInt("top4_score", ranking_score[3]);
-                editorRanking.putString("top4_name", ranking_name[3]);}
-
-            if(userRanking.getInt("top5_score",0)!=0){
-                editorRanking.putInt("top5_score", ranking_score[4]);
-                editorRanking.putString("top5_name", ranking_name[4]);}
-
-            if(userRanking.getInt("top6_score",0)!=0){
-                editorRanking.putInt("top6_score", ranking_score[5]);
-                editorRanking.putString("top6_name", ranking_name[5]);}
-
-            if(userRanking.getInt("top7_score",0)!=0){
-                editorRanking.putInt("top7_score", ranking_score[6]);
-                editorRanking.putString("top7_name", ranking_name[6]);}
-
-            if(userRanking.getInt("top8_score",0)!=0){
-                editorRanking.putInt("top8_score", ranking_score[7]);
-                editorRanking.putString("top8_name", ranking_name[7]);}
-
-            if(userRanking.getInt("top9_score",0)!=0){
-                editorRanking.putInt("top9_score", ranking_score[8]);
-                editorRanking.putString("top9_name", ranking_name[8]);}
-
-            if(userRanking.getInt("top10_score",0)!=0){
-                editorRanking.putInt("top10_score", ranking_score[9]);
-                editorRanking.putString("top10_name", ranking_name[9]);}
-
-
-            editorRanking.putInt("top3_score", totalScore);
-            editorRanking.putString("top3_name", name);
-        } else if (userRanking.getInt("top4_score", 0) <= totalScore) {
-
-            if(!userRanking.getString("top4_name","0").equals(name)){
-                editorRanking.putInt("top5_score", ranking_score[4]);
-                editorRanking.putString("top5_name", ranking_name[4]);}
-
-            if(userRanking.getInt("top6_score",0)!=0){
-                editorRanking.putInt("top6_score", ranking_score[5]);
-                editorRanking.putString("top6_name", ranking_name[5]);}
-
-            if(userRanking.getInt("top7_score",0)!=0){
-                editorRanking.putInt("top7_score", ranking_score[6]);
-                editorRanking.putString("top7_name", ranking_name[6]);}
-
-            if(userRanking.getInt("top8_score",0)!=0){
-                editorRanking.putInt("top8_score", ranking_score[7]);
-                editorRanking.putString("top8_name", ranking_name[7]);}
-
-            if(userRanking.getInt("top9_score",0)!=0){
-                editorRanking.putInt("top9_score", ranking_score[8]);
-                editorRanking.putString("top9_name", ranking_name[8]);}
-
-            if(userRanking.getInt("top10_score",0)!=0){
-                editorRanking.putInt("top10_score", ranking_score[9]);
-                editorRanking.putString("top10_name", ranking_name[9]);}
-
-            editorRanking.putInt("top4_score", totalScore);
-            editorRanking.putString("top4_name", name);
-        } else if (userRanking.getInt("top5_score", 0) <= totalScore) {
-
-            if(!userRanking.getString("top5_name","0").equals(name)){
-                editorRanking.putInt("top6_score", ranking_score[5]);
-                editorRanking.putString("top6_name", ranking_name[5]);}
-
-            if(userRanking.getInt("top7_score",0)!=0){
-                editorRanking.putInt("top7_score", ranking_score[6]);
-                editorRanking.putString("top7_name", ranking_name[6]);}
-
-            if(userRanking.getInt("top8_score",0)!=0){
-                editorRanking.putInt("top8_score", ranking_score[7]);
-                editorRanking.putString("top8_name", ranking_name[7]);}
-
-            if(userRanking.getInt("top9_score",0)!=0){
-                editorRanking.putInt("top9_score", ranking_score[8]);
-                editorRanking.putString("top9_name", ranking_name[8]);}
-
-            if(userRanking.getInt("top10_score",0)!=0){
-                editorRanking.putInt("top10_score", ranking_score[9]);
-                editorRanking.putString("top10_name", ranking_name[9]);}
-
-            editorRanking.putInt("top5_score", totalScore);
-            editorRanking.putString("top5_name", name);
-        } else if (userRanking.getInt("top6_score", 0) <= totalScore) {
-
-            if(!userRanking.getString("top6_name","0").equals(name)){
-                editorRanking.putInt("top7_score", ranking_score[6]);
-                editorRanking.putString("top7_name", ranking_name[6]);}
-
-            if(userRanking.getInt("top8_score",0)!=0){
-                editorRanking.putInt("top8_score", ranking_score[7]);
-                editorRanking.putString("top8_name", ranking_name[7]);}
-
-            if(userRanking.getInt("top9_score",0)!=0){
-                editorRanking.putInt("top9_score", ranking_score[8]);
-                editorRanking.putString("top9_name", ranking_name[8]);}
-
-            if(userRanking.getInt("top10_score",0)!=0){
-                editorRanking.putInt("top10_score", ranking_score[9]);
-                editorRanking.putString("top10_name", ranking_name[9]);}
-
-            editorRanking.putInt("top6_score", totalScore);
-            editorRanking.putString("top6_name", name);
-        } else if (userRanking.getInt("top7score", 0) <= totalScore) {
-
-            if(!userRanking.getString("top7_name","0").equals(name)){
-                editorRanking.putInt("top8_score", ranking_score[7]);
-                editorRanking.putString("top8_name", ranking_name[7]);}
-
-            if(userRanking.getInt("top9_score",0)!=0){
-                editorRanking.putInt("top9_score", ranking_score[8]);
-                editorRanking.putString("top9_name", ranking_name[8]);}
-
-            if(userRanking.getInt("top10_score",0)!=0){
-                editorRanking.putInt("top10_score", ranking_score[9]);
-                editorRanking.putString("top10_name", ranking_name[9]);}
-
-            editorRanking.putInt("top7_score", totalScore);
-            editorRanking.putString("top7_name", name);
-        } else if (userRanking.getInt("top8_score", 0) <= totalScore) {
-
-            if(!userRanking.getString("top8_name","0").equals(name)){
-                editorRanking.putInt("top9_score", ranking_score[8]);
-                editorRanking.putString("top9_name", ranking_name[8]);}
-
-            if(userRanking.getInt("top10_score",0)!=0){
-                editorRanking.putInt("top10_score", ranking_score[9]);
-                editorRanking.putString("top10_name", ranking_name[9]);}
-
-            editorRanking.putInt("top8_score", totalScore);
-            editorRanking.putString("top8_name", name);
-        } else if (userRanking.getInt("top9_score", 0) <= totalScore) {
-
-
-
-            if(!userRanking.getString("top9_name","0").equals(name)){
-                editorRanking.putInt("top10_score", ranking_score[9]);
-                editorRanking.putString("top10_name", ranking_name[9]);}
-
-            editorRanking.putInt("top9_score", totalScore);
-            editorRanking.putString("top9_name", name);
-
-        } else if (userRanking.getInt("top10_score", 0) <= totalScore) {
-            editorRanking.putInt("top10_score", totalScore);
-            editorRanking.putString("top10_name", name);
-        }
 
 
 
@@ -595,9 +565,7 @@ public class Stage extends AppCompatActivity implements View.OnClickListener, An
         //if the user score <top1 and >=top2,then user become top2
         // original 2->3 3->4 4->5.......
 
-
-        editorRanking.commit();
-    editor.commit();}
+   }
 
 
 

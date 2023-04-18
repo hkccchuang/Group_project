@@ -2,6 +2,7 @@ package com.example.groupproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
@@ -37,6 +38,9 @@ public class Stage9 extends Stage {//should change the name when copy
 
 
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +49,7 @@ public class Stage9 extends Stage {//should change the name when copy
         loadAnimation();
         loadSound();
         startChronometer();
+        AudioManager mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
     }
 
 
@@ -118,6 +123,7 @@ public class Stage9 extends Stage {//should change the name when copy
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+
 
     if(keyCode==KeyEvent.KEYCODE_VOLUME_DOWN){
         beforeNextStage();

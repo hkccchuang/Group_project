@@ -53,6 +53,7 @@ public class Stage6 extends Stage {//should change the name when copy
         loadSound();
         startChronometer();
 
+
     }
 
 
@@ -91,7 +92,7 @@ public class Stage6 extends Stage {//should change the name when copy
 
     public void onClick(View view) {
         hour=calendar.get(Calendar.HOUR_OF_DAY);//get hour
-        answer.setText(String.valueOf(hour));
+
 
 
         if(!isFastDoubleClick()) {

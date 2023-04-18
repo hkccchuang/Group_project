@@ -38,7 +38,7 @@
         android:maxLength="9"
         android:rotation="-2"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textSize="8sp"
 
         app:layout_constraintBottom_toBottomOf="@+id/imageRegister"
         app:layout_constraintEnd_toEndOf="@+id/imageRegister"
