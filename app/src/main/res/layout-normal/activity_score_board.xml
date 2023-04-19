@@ -46,7 +46,7 @@
                 android:layout_marginTop="35dp"
                 android:text="0"
                 android:textColor="@color/black"
-                android:textSize="30sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,7 +57,7 @@
                 android:layout_marginTop="95dp"
                 android:text="0"
                 android:textColor="@color/black"
-                android:textSize="30sp"
+                android:textSize="16spp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -68,7 +68,7 @@
                 android:layout_marginTop="155dp"
                 android:text="0"
                 android:textColor="@color/black"
-                android:textSize="30sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -79,7 +79,7 @@
                 android:layout_marginTop="220dp"
                 android:text="0"
                 android:textColor="@color/black"
-                android:textSize="30sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -90,7 +90,7 @@
                 android:layout_marginTop="285dp"
                 android:text="0"
                 android:textColor="@color/black"
-                android:textSize="30sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -101,7 +101,7 @@
                 android:layout_marginTop="355dp"
                 android:text="0"
                 android:textColor="@color/black"
-                android:textSize="30sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -112,7 +112,7 @@
                 android:layout_marginTop="420dp"
                 android:text="0"
                 android:textColor="@color/black"
-                android:textSize="30sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -123,7 +123,7 @@
                 android:layout_marginTop="490dp"
                 android:text="0"
                 android:textColor="@color/black"
-                android:textSize="30sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -134,7 +134,7 @@
                 android:layout_marginTop="555dp"
                 android:text="0"
                 android:textColor="@color/black"
-                android:textSize="30sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -145,7 +145,7 @@
                 android:layout_marginTop="615dp"
                 android:text="0"
                 android:textColor="@color/black"
-                android:textSize="30sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
