@@ -8,8 +8,8 @@
 
     <ImageButton
         android:id="@+id/btnStart"
-        android:layout_width="291dp"
-        android:layout_height="119dp"
+        android:layout_width="174dp"
+        android:layout_height="63dp"
         android:background="@drawable/btn_start"
         android:contentDescription="@string/contentDescription1"
         android:scaleType="fitXY"
@@ -23,8 +23,8 @@
 
     <ImageButton
         android:id="@+id/btnContinue"
-        android:layout_width="291dp"
-        android:layout_height="119dp"
+        android:layout_width="163dp"
+        android:layout_height="67dp"
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="9dp"
@@ -41,8 +41,8 @@
 
     <ImageButton
         android:id="@+id/btnScore"
-        android:layout_width="291dp"
-        android:layout_height="119dp"
+        android:layout_width="162dp"
+        android:layout_height="66dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/btn_score"
         android:contentDescription="@string/contentDescription3"
@@ -57,26 +57,23 @@
 
     <ImageButton
         android:id="@+id/btnLogin"
-        android:layout_width="62dp"
-        android:layout_height="69dp"
+        android:layout_width="50dp"
+        android:layout_height="49dp"
         android:background="@android:drawable/ic_menu_my_calendar"
+        android:contentDescription="@string/Restart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_my_calendar"
-        android:contentDescription="@string/Restart"/>
+        app:srcCompat="@android:drawable/ic_menu_my_calendar" />
 
     <TextView
         android:id="@+id/greeting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="177dp"
-        android:layout_marginLeft="177dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="176dp"
-        android:layout_marginRight="176dp"
+        android:layout_marginTop="56dp"
         android:text="@string/greeting"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

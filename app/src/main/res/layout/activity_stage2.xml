@@ -22,9 +22,9 @@
 
     <ImageButton
         android:id="@+id/btnBack"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="95dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/back"
         android:contentDescription="@string/btn_cancel"
         android:scaleType="fitXY"
@@ -36,29 +36,30 @@
         android:id="@+id/chronometer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="40dp"
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/btnHint"
-        android:layout_width="95dp"
-        android:layout_height="72dp"
+        android:layout_width="86dp"
+        android:layout_height="63dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/hint"
+        android:contentDescription="hint"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hint"
-        android:contentDescription="hint"/>
+        app:srcCompat="@drawable/hint" />
 
     <ImageButton
         android:id="@+id/btnRestart"
-        android:layout_width="101dp"
-        android:layout_height="79dp"
+        android:layout_width="96dp"
+        android:layout_height="73dp"
         android:background="@drawable/restart"
         android:contentDescription="@string/Restart"
         android:scaleType="fitXY"
@@ -69,14 +70,15 @@
 
     <TextView
         android:id="@+id/false1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="83dp"
+        android:layout_height="51dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="76dp"
         android:text="@string/S2_I1"
         android:textSize="48sp"
         app:layout_constraintEnd_toStartOf="@+id/false2"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stage_title" />
 
@@ -84,10 +86,11 @@
         android:id="@+id/real"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="16dp"
         android:text="@string/S2_I2"
         android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stage_title" />
 
@@ -95,11 +98,11 @@
         android:id="@+id/false2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="68dp"
         android:text="@string/S2_I3"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.612"
+        app:layout_constraintHorizontal_bias="0.856"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stage_title" />
 

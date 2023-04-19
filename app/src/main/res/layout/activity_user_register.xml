@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/imageRegister"
-        android:layout_width="384dp"
-        android:layout_height="225dp"
+        android:layout_width="275dp"
+        android:layout_height="150dp"
         android:layout_marginStart="55dp"
         android:layout_marginLeft="55dp"
         android:layout_marginTop="100dp"
@@ -26,8 +26,8 @@
 
     <EditText
         android:id="@+id/editUserName"
-        android:layout_width="250dp"
-        android:layout_height="82dp"
+        android:layout_width="213dp"
+        android:layout_height="36dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="10dp"
@@ -40,35 +40,33 @@
         android:maxLength="9"
         android:rotation="-2"
         android:textAlignment="center"
-        android:textSize="40sp"
+        android:textSize="20sp"
 
         app:layout_constraintBottom_toBottomOf="@+id/imageRegister"
         app:layout_constraintEnd_toEndOf="@+id/imageRegister"
+        app:layout_constraintHorizontal_bias="0.565"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageRegister" />
+        app:layout_constraintTop_toTopOf="@+id/imageRegister"
+        app:layout_constraintVertical_bias="0.528" />
 
     <Button
         android:id="@+id/btnCancel"
-        android:layout_width="68dp"
-        android:layout_height="73dp"
-        android:layout_marginStart="310dp"
-        android:layout_marginLeft="310dp"
+        android:layout_width="51dp"
+        android:layout_height="38dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginRight="35dp"
-        android:text="@string/btn_register"
-        android:contentDescription="@string/btn_cancel2"
-        app:backgroundTint="@color/black"
         android:background="@android:color/transparent"
+        android:contentDescription="@string/btn_cancel2"
+        android:text="@string/btn_register"
+        app:backgroundTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintHorizontal_bias="0.836"
         app:layout_constraintStart_toStartOf="@+id/imageRegister"
         app:layout_constraintTop_toTopOf="@+id/imageRegister" />
 
     <Button
         android:id="@+id/btnConfirm"
-        android:layout_width="117dp"
-        android:layout_height="72dp"
+        android:layout_width="57dp"
+        android:layout_height="40dp"
         android:layout_marginStart="67dp"
         android:layout_marginLeft="67dp"
         android:layout_marginBottom="5dp"
@@ -81,8 +79,8 @@
 
     <Button
         android:id="@+id/btnCancel2"
-        android:layout_width="122dp"
-        android:layout_height="64dp"
+        android:layout_width="74dp"
+        android:layout_height="26dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="15dp"

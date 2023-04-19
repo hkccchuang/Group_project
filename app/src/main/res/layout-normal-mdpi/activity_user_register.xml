@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserRegister">
+
+    <ImageView
+        android:id="@+id/imageRegister"
+        android:layout_width="249dp"
+        android:layout_height="170dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginRight="55dp"
+        android:layout_marginBottom="258dp"
+        android:contentDescription="@string/contentDescription4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/user_register" />
+
+    <EditText
+        android:id="@+id/editUserName"
+        android:layout_width="195dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="10dp"
+        android:background="@null"
+        android:cursorVisible="false"
+        android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        android:ems="10"
+        android:hint="@string/hint_register"
+        android:inputType="textPersonName"
+        android:maxLength="9"
+        android:rotation="-2"
+        android:textAlignment="center"
+        android:textSize="20sp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/imageRegister"
+        app:layout_constraintEnd_toEndOf="@+id/imageRegister"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageRegister" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="38dp"
+        android:layout_height="50dp"
+
+        android:layout_marginTop="4dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/btn_cancel2"
+        android:text="@string/btn_register"
+        app:backgroundTint="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/imageRegister"
+        app:layout_constraintTop_toTopOf="@+id/imageRegister" />
+
+    <Button
+        android:id="@+id/btnConfirm"
+        android:layout_width="85dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginBottom="24dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/btn_confirm"
+        android:text="@string/btn_register"
+        app:backgroundTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imageRegister"
+        app:layout_constraintStart_toStartOf="@+id/imageRegister" />
+
+    <Button
+        android:id="@+id/btnCancel2"
+        android:layout_width="77dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="15dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/btn_cancel"
+        android:text="@string/btn_register"
+        app:backgroundTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imageRegister"
+        app:layout_constraintStart_toEndOf="@+id/btnConfirm" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
