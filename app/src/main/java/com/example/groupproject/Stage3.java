@@ -144,6 +144,8 @@ public class Stage3 extends Stage implements View.OnTouchListener {//should chan
     @Override
     public boolean onTouch(View view, MotionEvent event) {
 
+
+
         if(event.getAction()==MotionEvent.ACTION_DOWN){
             x=event.getX();
             y=event.getY();
@@ -157,12 +159,9 @@ public class Stage3 extends Stage implements View.OnTouchListener {//should chan
             x=event.getX();
             y=event.getY();
         }
+
         return  true;
     }
 
-    public boolean onTouchEvent(MotionEvent event) {
-        InputMethodManager im = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-        im.hideSoftInputFromWindow(getCurrentFocus().getApplicationWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-        return super.onTouchEvent(event);
-    }//hide the keyboard when touch the screen
+
 }
